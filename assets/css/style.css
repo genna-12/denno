@@ -1,20 +1,17 @@
 :root {
-    /* BACKGROUNDS */
-    --bg-color: #050000;      /* Nero con una punta impercettibile di rosso */
-    --bg-secondary: #1a0505;  /* Rosso scuro profondo per sfumature */
+    /* PALETTE DEFINITION */
+    --bg-color: #080808;      /* Nero profondo base */
+    --bg-gradient: #1c1512;   /* Mix molto scuro di nero e marrone per il centro */
     
-    /* TYPOGRAPHY */
-    --text-main: #ffffff;
-    --text-muted: #a89f9f;    /* Grigio caldo invece che freddo */
+    --text-main: #e6e6e6;     /* Bianco sporco per titoli */
+    --text-muted: #a09085;    /* Taupe caldo per sottotitoli e dettagli */
     
-    /* ACCENTS (Il cuore del cambiamento) */
-    --accent: #ff3d00;        /* Arancio Lava intenso / Rosso Fuoco */
-    --accent-glow: #ff3d00;   /* Colore per i bagliori */
-    --gradient-text: linear-gradient(to right, #ffffff, #ff9e80); /* Bianco -> Pesca caldo */
+    --border-dim: #4a3b32;    /* Marrone scuro per bordi non attivi */
+    --accent: #cf5c36;        /* Arancio terracotta per azioni e hover */
     
     /* SYSTEM */
     --font-main: 'Outfit', sans-serif;
-    --transition-slow: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    --transition-slow: all 0.7s cubic-bezier(0.2, 0.8, 0.2, 1); /* Ancora più smooth */
     --transition-fast: all 0.3s ease;
     --nav-height: 80px;
 }
@@ -35,12 +32,12 @@ body {
 
 body::selection {
     background-color: var(--accent);
-    color: #000;
+    color: #fff;
 }
 
 body::-moz-selection {
     background-color: var(--accent);
-    color: #000;
+    color: #fff;
 }
 
 a { text-decoration: none; color: inherit; }
@@ -63,11 +60,11 @@ ul { list-style: none; }
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    background: rgba(5, 0, 0, 0.6); /* Base rossastra impercettibile */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(8, 8, 8, 0.7); /* Base scura */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     transition: transform 0.4s ease-in-out, background 0.4s ease;
-    border-bottom: 1px solid rgba(255, 61, 0, 0.05); /* Linea sottilissima arancio */
+    border-bottom: 1px solid rgba(74, 59, 50, 0.3); /* Linea sottile color caffè */
 }
 
 .navbar.nav-hidden {
@@ -80,17 +77,17 @@ ul { list-style: none; }
 }
 
 .nav-links a {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: var(--text-muted);
+    color: var(--text-muted); /* Colore sabbia spento */
     transition: var(--transition-fast);
-    position: relative;
+    font-weight: 400;
 }
 
 .nav-links a:hover {
     color: var(--text-main);
-    text-shadow: 0 0 15px rgba(255, 61, 0, 0.5); /* Glow Arancio */
+    /* Nessun text-shadow neon, solo un cambio colore pulito */
 }
 
 /* HERO SECTION */
@@ -108,11 +105,16 @@ ul { list-style: none; }
     position: absolute;
     width: 200%;
     height: 200%;
-    /* Gradiente modificato: Dal rosso profondo al nero assoluto */
-    background: radial-gradient(circle at 50% 50%, #2f0a0a 0%, #050000 60%);
-    opacity: 0.5;
+    /* Gradiente molto sottile e caldo al centro */
+    background: radial-gradient(circle at 50% 50%, var(--bg-gradient) 0%, var(--bg-color) 60%);
+    opacity: 0.6;
     z-index: -1;
-    animation: pulseGradient 10s infinite alternate;
+    animation: breathingLight 12s infinite alternate ease-in-out;
+}
+
+@keyframes breathingLight {
+    0% { opacity: 0.4; transform: scale(1); }
+    100% { opacity: 0.7; transform: scale(1.1); }
 }
 
 .hero-content {
@@ -121,152 +123,178 @@ ul { list-style: none; }
 }
 
 .hero-name {
-    font-size: 4.5rem;
-    font-weight: 600; /* Leggermente più bold per impatto */
-    letter-spacing: -2px;
-    margin-bottom: 1rem;
-    background: var(--gradient-text);
+    font-size: 5rem;
+    font-weight: 300; /* Più sottile ed elegante */
+    letter-spacing: -3px;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+    /* Gradiente sottile sul testo: bianco -> sabbia */
+    background: linear-gradient(to bottom right, #fff, #a09085);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .hero-tagline {
-    font-size: 1.2rem;
-    color: var(--text-muted);
-    letter-spacing: 4px;
+    font-size: 1.1rem;
+    color: var(--text-muted); /* Sabbia */
+    letter-spacing: 6px;
     text-transform: uppercase;
     font-weight: 300;
     margin-bottom: 2rem;
+    border-left: 1px solid var(--accent); /* Piccolo accento laterale */
+    padding-left: 15px;
+    display: inline-block;
 }
 
 #lottie-signature {
-    width: 300px;
-    height: 150px;
+    width: 280px;
+    height: 140px;
     margin: 0 auto;
-    /* Opzionale: filtro se la firma originale è nera e vuoi farla arancio */
-    /* filter: drop-shadow(0 0 5px rgba(255,61,0,0.3)); */
+    opacity: 0.9;
 }
 
 /* SERVICES */
 .services {
-    padding: 120px 0;
+    padding: 140px 0;
     background: var(--bg-color);
 }
 
 .grid-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    gap: 30px;
 }
 
 .service-card {
-    background: rgba(255,255,255,0.01);
-    border: 1px solid rgba(255,255,255,0.03);
-    padding: 40px;
+    /* Background scuro ma con una tinta calda impercettibile */
+    background: linear-gradient(180deg, rgba(74, 59, 50, 0.05) 0%, rgba(8,8,8,0) 100%);
+    border: 1px solid rgba(74, 59, 50, 0.2); /* Bordo color caffè trasparente */
+    padding: 50px 40px;
     transition: var(--transition-slow);
     cursor: default;
-    position: relative;
-    overflow: hidden;
 }
 
-/* Effetto Hover "Brace Ardente" */
 .service-card:hover {
-    border-color: rgba(255, 61, 0, 0.4);
-    box-shadow: 0 0 40px rgba(255, 61, 0, 0.08); /* Glow rosso diffuso */
-    transform: translateY(-5px);
-    background: linear-gradient(to bottom right, rgba(255,61,0,0.02), transparent);
+    border-color: var(--accent); /* Diventa arancio bruciato */
+    background: linear-gradient(180deg, rgba(207, 92, 54, 0.05) 0%, rgba(8,8,8,0) 100%);
+    transform: translateY(-10px);
 }
 
 .service-number {
     display: block;
-    font-size: 0.8rem;
-    color: var(--accent);
-    margin-bottom: 20px;
-    font-family: monospace;
-    text-shadow: 0 0 10px rgba(255,61,0,0.4);
+    font-size: 0.9rem;
+    color: var(--text-muted); /* Colore sabbia */
+    margin-bottom: 25px;
+    font-family: var(--font-main);
+    letter-spacing: 2px;
+}
+
+.service-card:hover .service-number {
+    color: var(--accent); /* Cambia colore in hover */
+    transition: var(--transition-fast);
 }
 
 .service-card h3 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 400;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     color: var(--text-main);
+    letter-spacing: -0.5px;
 }
 
 .service-card p {
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: var(--text-muted);
-    line-height: 1.6;
+    line-height: 1.7;
+    font-weight: 300;
 }
 
 /* WORKS SPOILER */
 .works-teaser {
-    padding: 0 0 120px 0;
+    padding: 0 0 140px 0;
 }
 
 .section-header {
-    margin-bottom: 60px;
+    margin-bottom: 80px;
     text-align: center;
+    position: relative;
+}
+
+/* Linea decorativa sopra il titolo */
+.section-header::before {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 60px;
+    background: var(--border-dim);
+    margin: 0 auto 30px auto;
 }
 
 .section-header h2 {
-    font-size: 2rem;
-    font-weight: 300;
-    letter-spacing: 2px;
+    font-size: 2.2rem;
+    font-weight: 200;
+    letter-spacing: 4px;
+    color: var(--text-main);
 }
 
 .works-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    margin-bottom: 60px;
+    gap: 40px;
+    margin-bottom: 80px;
 }
 
 .work-item {
-    height: 400px;
-    background-color: #0f0505; /* Placeholder caldo scuro */
+    height: 450px;
+    background-color: #120e0c; /* Placeholder marrone scurissimo */
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    border: 1px solid rgba(255,255,255,0.02);
+    border: 1px solid transparent;
+    transition: var(--transition-slow);
+}
+
+.work-item:hover {
+    border-color: rgba(207, 92, 54, 0.3);
 }
 
 .work-overlay {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    /* Overlay rosso scuro invece che blu */
-    background: rgba(20, 5, 5, 0.6); 
+    /* Overlay caldo scuro */
+    background: rgba(8, 8, 8, 0.4); 
     transition: var(--transition-slow);
 }
 
 .work-item:hover .work-overlay {
-    background: rgba(255, 61, 0, 0.05); /* Tinta arancio leggerissima */
+    background: rgba(207, 92, 54, 0.05); /* Tinta terracotta leggerissima */
 }
 
 .work-info {
     position: absolute;
-    bottom: 30px;
-    left: 30px;
+    bottom: 40px;
+    left: 40px;
     z-index: 2;
 }
 
 .work-info h4 {
-    font-size: 1.5rem;
-    font-weight: 400;
-    margin-bottom: 5px;
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-bottom: 10px;
+    color: var(--text-main);
 }
 
 .view-case {
     font-size: 0.8rem;
     color: var(--accent);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(15px);
     transition: var(--transition-fast);
     display: block;
-    text-shadow: 0 0 8px rgba(255,61,0,0.6);
+    font-weight: 500;
 }
 
 .work-item:hover .view-case {
@@ -279,51 +307,64 @@ ul { list-style: none; }
 }
 
 .btn-primary {
-    border: 1px solid var(--text-muted);
-    padding: 15px 40px;
-    font-size: 0.9rem;
-    letter-spacing: 2px;
+    display: inline-block;
+    border: 1px solid var(--text-muted); /* Bordo sabbia */
+    padding: 18px 50px;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
     text-transform: uppercase;
     transition: var(--transition-fast);
     color: var(--text-main);
+    background: transparent;
 }
 
 .btn-primary:hover {
     border-color: var(--accent);
-    color: var(--accent);
-    box-shadow: 0 0 25px rgba(255, 61, 0, 0.15); /* Glow intenso */
-    background: rgba(255,61,0,0.02);
+    color: #fff;
+    background: var(--accent); /* Bottone pieno in hover per impatto */
+    box-shadow: 0 5px 20px rgba(207, 92, 54, 0.2);
 }
 
 /* LANG SWITCHER */
 .lang-switcher {
     position: fixed;
-    bottom: 30px;
-    left: 30px;
+    bottom: 40px;
+    left: 40px;
     z-index: 999;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     cursor: pointer;
-    opacity: 0.7;
+    opacity: 0.6;
     transition: opacity 0.3s;
 }
 
 .lang-switcher:hover { opacity: 1; }
 
-.lang-icon { width: 20px; height: 20px; filter: grayscale(1); transition: 0.3s; }
-.lang-switcher:hover .lang-icon { filter: grayscale(0); }
-#currentLang { font-size: 0.8rem; letter-spacing: 1px; color: var(--text-muted); }
+.lang-icon { width: 18px; height: 18px; opacity: 0.8; }
+#currentLang { font-size: 0.75rem; letter-spacing: 2px; color: var(--text-muted); }
+
+/* SCROLL INDICATOR (Overwrite) */
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 60px; /* Più lungo */
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--accent));
+    opacity: 0.7;
+}
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-    .nav-links { gap: 20px; }
-    .nav-links a { font-size: 0.8rem; letter-spacing: 1px; }
+    .nav-links { gap: 25px; }
+    .nav-links a { font-size: 0.75rem; }
     
-    .hero-name { font-size: 2.5rem; }
-    .hero-tagline { font-size: 0.9rem; }
+    .hero-name { font-size: 3rem; }
+    .hero-tagline { font-size: 0.85rem; letter-spacing: 3px; }
     
     .grid-3, .works-grid { grid-template-columns: 1fr; }
-    
-    .work-item { height: 300px; }
+    .work-item { height: 350px; }
+    .service-card { padding: 30px; }
 }
