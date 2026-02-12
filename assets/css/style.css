@@ -1,19 +1,23 @@
 :root {
-    /* PALETTE DEFINITION */
-    --bg-color: #080808;      /* Nero profondo base */
-    --bg-gradient: #1c1512;   /* Mix molto scuro di nero e marrone per il centro */
+    /* PALETTE: COSMIC NOIR */
+    --bg-color: #05010a;      /* Nero profondo violaceo */
+    --bg-secondary: #0f021f;  /* Background per card */
     
-    --text-main: #e6e6e6;     /* Bianco sporco per titoli */
-    --text-muted: #a09085;    /* Taupe caldo per sottotitoli e dettagli */
+    --text-main: #ffffff;
+    --text-muted: #d8b4fe;    /* Lavanda pallido elegante */
     
-    --border-dim: #4a3b32;    /* Marrone scuro per bordi non attivi */
-    --accent: #cf5c36;        /* Arancio terracotta per azioni e hover */
+    --accent: #a855f7;        /* Viola elettrico vibrante */
+    --accent-dim: #7e22ce;    /* Viola scuro per sfumature */
+    --border-color: rgba(168, 85, 247, 0.15); /* Bordi sottili */
     
     /* SYSTEM */
     --font-main: 'Outfit', sans-serif;
-    --transition-slow: all 0.7s cubic-bezier(0.2, 0.8, 0.2, 1); /* Ancora più smooth */
+    --transition-slow: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     --transition-fast: all 0.3s ease;
     --nav-height: 80px;
+    
+    /* GLOWS */
+    --glow-shadow: 0 0 30px rgba(168, 85, 247, 0.15);
 }
 
 * {
@@ -31,11 +35,6 @@ body {
 }
 
 body::selection {
-    background-color: var(--accent);
-    color: #fff;
-}
-
-body::-moz-selection {
     background-color: var(--accent);
     color: #fff;
 }
@@ -60,11 +59,11 @@ ul { list-style: none; }
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    background: rgba(8, 8, 8, 0.7); /* Base scura */
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    background: rgba(5, 1, 10, 0.6); /* Vetro scuro */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     transition: transform 0.4s ease-in-out, background 0.4s ease;
-    border-bottom: 1px solid rgba(74, 59, 50, 0.3); /* Linea sottile color caffè */
+    border-bottom: 1px solid rgba(168, 85, 247, 0.05);
 }
 
 .navbar.nav-hidden {
@@ -77,17 +76,18 @@ ul { list-style: none; }
 }
 
 .nav-links a {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: var(--text-muted); /* Colore sabbia spento */
+    color: var(--text-muted);
     transition: var(--transition-fast);
-    font-weight: 400;
+    opacity: 0.8;
 }
 
 .nav-links a:hover {
     color: var(--text-main);
-    /* Nessun text-shadow neon, solo un cambio colore pulito */
+    opacity: 1;
+    text-shadow: 0 0 12px rgba(168, 85, 247, 0.6); /* Glow Viola */
 }
 
 /* HERO SECTION */
@@ -105,16 +105,16 @@ ul { list-style: none; }
     position: absolute;
     width: 200%;
     height: 200%;
-    /* Gradiente molto sottile e caldo al centro */
-    background: radial-gradient(circle at 50% 50%, var(--bg-gradient) 0%, var(--bg-color) 60%);
+    /* Gradiente Nebulosa */
+    background: radial-gradient(circle at 50% 50%, #2e054e 0%, #05010a 65%);
     opacity: 0.6;
     z-index: -1;
-    animation: breathingLight 12s infinite alternate ease-in-out;
+    animation: cosmicPulse 8s infinite alternate ease-in-out;
 }
 
-@keyframes breathingLight {
-    0% { opacity: 0.4; transform: scale(1); }
-    100% { opacity: 0.7; transform: scale(1.1); }
+@keyframes cosmicPulse {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(1.05); opacity: 0.7; }
 }
 
 .hero-content {
@@ -124,87 +124,93 @@ ul { list-style: none; }
 
 .hero-name {
     font-size: 5rem;
-    font-weight: 300; /* Più sottile ed elegante */
-    letter-spacing: -3px;
-    margin-bottom: 1.5rem;
-    color: var(--text-main);
-    /* Gradiente sottile sul testo: bianco -> sabbia */
-    background: linear-gradient(to bottom right, #fff, #a09085);
+    font-weight: 500;
+    letter-spacing: -2px;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, #fff, #e9d5ff); /* Bianco -> Lilla */
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.2));
 }
 
 .hero-tagline {
-    font-size: 1.1rem;
-    color: var(--text-muted); /* Sabbia */
-    letter-spacing: 6px;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    letter-spacing: 5px;
     text-transform: uppercase;
     font-weight: 300;
     margin-bottom: 2rem;
-    border-left: 1px solid var(--accent); /* Piccolo accento laterale */
-    padding-left: 15px;
-    display: inline-block;
 }
 
 #lottie-signature {
-    width: 280px;
-    height: 140px;
+    width: 300px;
+    height: 150px;
     margin: 0 auto;
-    opacity: 0.9;
+    filter: drop-shadow(0 0 5px rgba(168, 85, 247, 0.3)); /* Leggero alone viola sulla firma */
 }
 
 /* SERVICES */
 .services {
-    padding: 140px 0;
+    padding: 130px 0;
     background: var(--bg-color);
+    position: relative;
+}
+
+/* Glow decorativo dietro i servizi */
+.services::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%; height: 80%;
+    background: radial-gradient(circle, rgba(126, 34, 206, 0.05) 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
 }
 
 .grid-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 40px;
+    position: relative;
+    z-index: 1;
 }
 
 .service-card {
-    /* Background scuro ma con una tinta calda impercettibile */
-    background: linear-gradient(180deg, rgba(74, 59, 50, 0.05) 0%, rgba(8,8,8,0) 100%);
-    border: 1px solid rgba(74, 59, 50, 0.2); /* Bordo color caffè trasparente */
-    padding: 50px 40px;
+    background: rgba(15, 2, 31, 0.4);
+    border: 1px solid var(--border-color);
+    padding: 45px;
     transition: var(--transition-slow);
     cursor: default;
+    border-radius: 2px; /* Angoli quasi vivi ma non taglienti */
 }
 
 .service-card:hover {
-    border-color: var(--accent); /* Diventa arancio bruciato */
-    background: linear-gradient(180deg, rgba(207, 92, 54, 0.05) 0%, rgba(8,8,8,0) 100%);
-    transform: translateY(-10px);
+    border-color: var(--accent);
+    box-shadow: var(--glow-shadow);
+    transform: translateY(-8px);
+    background: rgba(15, 2, 31, 0.8);
 }
 
 .service-number {
     display: block;
     font-size: 0.9rem;
-    color: var(--text-muted); /* Colore sabbia */
-    margin-bottom: 25px;
-    font-family: var(--font-main);
-    letter-spacing: 2px;
-}
-
-.service-card:hover .service-number {
-    color: var(--accent); /* Cambia colore in hover */
-    transition: var(--transition-fast);
+    color: var(--accent);
+    margin-bottom: 20px;
+    font-family: monospace;
+    opacity: 0.8;
 }
 
 .service-card h3 {
     font-size: 1.6rem;
     font-weight: 400;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     color: var(--text-main);
-    letter-spacing: -0.5px;
 }
 
 .service-card p {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--text-muted);
     line-height: 1.7;
     font-weight: 300;
@@ -212,89 +218,76 @@ ul { list-style: none; }
 
 /* WORKS SPOILER */
 .works-teaser {
-    padding: 0 0 140px 0;
+    padding: 0 0 130px 0;
 }
 
 .section-header {
-    margin-bottom: 80px;
+    margin-bottom: 70px;
     text-align: center;
-    position: relative;
-}
-
-/* Linea decorativa sopra il titolo */
-.section-header::before {
-    content: '';
-    display: block;
-    width: 1px;
-    height: 60px;
-    background: var(--border-dim);
-    margin: 0 auto 30px auto;
 }
 
 .section-header h2 {
     font-size: 2.2rem;
-    font-weight: 200;
-    letter-spacing: 4px;
-    color: var(--text-main);
+    font-weight: 300;
+    letter-spacing: 3px;
+    background: linear-gradient(to bottom, #fff, #c4b5fd);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .works-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-    margin-bottom: 80px;
+    gap: 30px;
+    margin-bottom: 70px;
 }
 
 .work-item {
-    height: 450px;
-    background-color: #120e0c; /* Placeholder marrone scurissimo */
+    height: 420px;
+    background-color: #11051c; /* Placeholder viola scurissimo */
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    border: 1px solid transparent;
-    transition: var(--transition-slow);
-}
-
-.work-item:hover {
-    border-color: rgba(207, 92, 54, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 .work-overlay {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    /* Overlay caldo scuro */
-    background: rgba(8, 8, 8, 0.4); 
+    /* Overlay sfumato viola scuro */
+    background: linear-gradient(to top, rgba(5, 1, 10, 0.9), rgba(5, 1, 10, 0.2));
     transition: var(--transition-slow);
 }
 
 .work-item:hover .work-overlay {
-    background: rgba(207, 92, 54, 0.05); /* Tinta terracotta leggerissima */
+    background: linear-gradient(to top, rgba(5, 1, 10, 0.8), rgba(168, 85, 247, 0.1));
 }
 
 .work-info {
     position: absolute;
-    bottom: 40px;
-    left: 40px;
+    bottom: 35px;
+    left: 35px;
     z-index: 2;
 }
 
 .work-info h4 {
-    font-size: 1.8rem;
-    font-weight: 300;
-    margin-bottom: 10px;
-    color: var(--text-main);
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
 .view-case {
     font-size: 0.8rem;
     color: var(--accent);
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     opacity: 0;
-    transform: translateY(15px);
+    transform: translateY(10px);
     transition: var(--transition-fast);
     display: block;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .work-item:hover .view-case {
@@ -307,64 +300,62 @@ ul { list-style: none; }
 }
 
 .btn-primary {
-    display: inline-block;
-    border: 1px solid var(--text-muted); /* Bordo sabbia */
-    padding: 18px 50px;
-    font-size: 0.8rem;
-    letter-spacing: 3px;
+    border: 1px solid var(--accent);
+    padding: 16px 45px;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
     text-transform: uppercase;
     transition: var(--transition-fast);
     color: var(--text-main);
-    background: transparent;
+    background: rgba(168, 85, 247, 0.05); /* Leggerissima tinta */
+    position: relative;
+    overflow: hidden;
 }
 
 .btn-primary:hover {
-    border-color: var(--accent);
+    background: var(--accent);
     color: #fff;
-    background: var(--accent); /* Bottone pieno in hover per impatto */
-    box-shadow: 0 5px 20px rgba(207, 92, 54, 0.2);
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
 }
 
 /* LANG SWITCHER */
 .lang-switcher {
     position: fixed;
-    bottom: 40px;
-    left: 40px;
+    bottom: 30px;
+    left: 30px;
     z-index: 999;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     cursor: pointer;
-    opacity: 0.6;
+    opacity: 0.7;
     transition: opacity 0.3s;
 }
 
 .lang-switcher:hover { opacity: 1; }
 
-.lang-icon { width: 18px; height: 18px; opacity: 0.8; }
-#currentLang { font-size: 0.75rem; letter-spacing: 2px; color: var(--text-muted); }
+.lang-icon { width: 20px; height: 20px; filter: hue-rotate(45deg); /* Tinta leggera */ }
+#currentLang { font-size: 0.8rem; letter-spacing: 1px; color: var(--text-muted); }
 
-/* SCROLL INDICATOR (Overwrite) */
+/* SCROLL INDICATOR */
 .scroll-indicator {
     position: absolute;
     bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
-    height: 60px; /* Più lungo */
+    height: 50px;
     width: 1px;
     background: linear-gradient(to bottom, transparent, var(--accent));
-    opacity: 0.7;
 }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-    .nav-links { gap: 25px; }
-    .nav-links a { font-size: 0.75rem; }
+    .nav-links { gap: 20px; }
+    .nav-links a { font-size: 0.8rem; letter-spacing: 1px; }
     
     .hero-name { font-size: 3rem; }
-    .hero-tagline { font-size: 0.85rem; letter-spacing: 3px; }
+    .hero-tagline { font-size: 0.9rem; letter-spacing: 3px; }
     
     .grid-3, .works-grid { grid-template-columns: 1fr; }
     .work-item { height: 350px; }
-    .service-card { padding: 30px; }
 }
