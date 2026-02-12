@@ -1,21 +1,20 @@
 :root {
-    /* BACKGROUNDS */
-    --bg-color: #050000;      /* Nero con una punta impercettibile di rosso */
-    --bg-secondary: #1a0505;  /* Rosso scuro profondo per sfumature */
+    /* PALETTE: ADRENALINE RED */
+    --bg-color: #030000;      /* Nero Assoluto */
+    --bg-surface: #0f0000;    /* Nero rossastro per le card */
     
-    /* TYPOGRAPHY */
     --text-main: #ffffff;
-    --text-muted: #a89f9f;    /* Grigio caldo invece che freddo */
+    --text-muted: #b3b3b3;    /* Grigio neutro per bilanciare il rosso */
     
-    /* ACCENTS (Il cuore del cambiamento) */
-    --accent: #ff3d00;        /* Arancio Lava intenso / Rosso Fuoco */
-    --accent-glow: #ff3d00;   /* Colore per i bagliori */
-    --gradient-text: linear-gradient(to right, #ffffff, #ff9e80); /* Bianco -> Pesca caldo */
+    /* IL ROSSO AGGRESSIVO */
+    --accent: #ff0f0f;        /* Rosso Neon Puro */
+    --accent-dark: #8a0000;   /* Rosso Sangue per sfumature */
+    --accent-glow: rgba(255, 15, 15, 0.6); /* Bagliore intenso */
     
     /* SYSTEM */
     --font-main: 'Outfit', sans-serif;
-    --transition-slow: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-    --transition-fast: all 0.3s ease;
+    --transition-slow: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); /* Scattante ma smooth */
+    --transition-fast: all 0.2s ease-out;
     --nav-height: 80px;
 }
 
@@ -34,7 +33,7 @@ body {
 }
 
 body::selection {
-    background-color: var(--accent); /* Quando selezioni il testo */
+    background-color: var(--accent);
     color: #000;
 }
 
@@ -58,11 +57,11 @@ ul { list-style: none; }
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    background: rgba(5, 0, 0, 0.6); /* Base rossastra impercettibile */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    transition: transform 0.4s ease-in-out, background 0.4s ease;
-    border-bottom: 1px solid rgba(255, 61, 0, 0.05); /* Linea sottilissima arancio */
+    background: rgba(3, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 15, 15, 0.1);
+    transition: transform 0.4s ease, background 0.4s ease;
 }
 
 .navbar.nav-hidden {
@@ -78,14 +77,16 @@ ul { list-style: none; }
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: var(--text-muted);
+    font-weight: 600; /* Più bold */
+    color: #fff;      /* Bianco per leggibilità */
     transition: var(--transition-fast);
-    position: relative;
+    opacity: 0.7;
 }
 
 .nav-links a:hover {
-    color: var(--text-main);
-    text-shadow: 0 0 15px rgba(255, 61, 0, 0.5); /* Glow Arancio */
+    color: var(--accent); /* Diventa ROSSO ACCESO in hover */
+    opacity: 1;
+    text-shadow: 0 0 15px var(--accent); /* Glow aggressivo */
 }
 
 /* HERO SECTION */
@@ -103,11 +104,15 @@ ul { list-style: none; }
     position: absolute;
     width: 200%;
     height: 200%;
-    /* Gradiente modificato: Dal rosso profondo al nero assoluto */
-    background: radial-gradient(circle at 50% 50%, #2f0a0a 0%, #050000 60%);
-    opacity: 0.5;
+    background: radial-gradient(circle at 50% 50%, #290000 0%, #030000 70%);
+    opacity: 0.8;
     z-index: -1;
-    animation: pulseGradient 10s infinite alternate;
+    animation: pulseRed 4s infinite alternate ease-in-out;
+}
+
+@keyframes pulseRed {
+    0% { opacity: 0.6; }
+    100% { opacity: 0.9; }
 }
 
 .hero-content {
@@ -115,32 +120,41 @@ ul { list-style: none; }
     z-index: 2;
 }
 
+/* MODIFICA RICHIESTA: NOME AGGRESSIVO */
 .hero-name {
-    font-size: 4.5rem;
-    font-weight: 600; /* Leggermente più bold per impatto */
-    letter-spacing: -2px;
+    font-size: 5.5rem; /* Più grande */
+    font-weight: 700;  /* Bold spinto */
+    letter-spacing: -3px;
     margin-bottom: 1rem;
-    background: var(--gradient-text);
+    text-transform: uppercase;
+    
+    /* Gradiente Verticale Metallico Rosso */
+    background: linear-gradient(180deg, #ff4d4d 0%, #ff0f0f 50%, #8a0000 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    
+    /* Drop Shadow potente per staccarlo dal fondo */
+    filter: drop-shadow(0 0 25px rgba(255, 15, 15, 0.4));
 }
 
 .hero-tagline {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--text-muted);
-    letter-spacing: 4px;
+    letter-spacing: 6px;
     text-transform: uppercase;
-    font-weight: 300;
+    font-weight: 400;
     margin-bottom: 2rem;
+    border-right: 2px solid var(--accent); /* Linea rossa a destra */
+    padding-right: 15px;
+    display: inline-block;
 }
 
 #lottie-signature {
-    width: 300px;
-    height: 150px;
+    width: 320px;
+    height: 160px;
     margin: 0 auto;
-    /* Opzionale: filtro se la firma originale è nera e vuoi farla arancio */
-    /* filter: drop-shadow(0 0 5px rgba(255,61,0,0.3)); */
+    filter: drop-shadow(0 0 5px var(--accent)); /* Firma luminescente rossa */
 }
 
 /* SERVICES */
@@ -152,41 +166,56 @@ ul { list-style: none; }
 .grid-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    gap: 30px;
 }
 
 .service-card {
-    background: rgba(255,255,255,0.01);
-    border: 1px solid rgba(255,255,255,0.03);
+    background: #080808;
+    border: 1px solid rgba(255, 255, 255, 0.05);
     padding: 40px;
     transition: var(--transition-slow);
-    cursor: default;
     position: relative;
     overflow: hidden;
 }
 
-/* Effetto Hover "Brace Ardente" */
+/* Hover Aggressivo sulle card */
 .service-card:hover {
-    border-color: rgba(255, 61, 0, 0.4);
-    box-shadow: 0 0 40px rgba(255, 61, 0, 0.08); /* Glow rosso diffuso */
-    transform: translateY(-5px);
-    background: linear-gradient(to bottom right, rgba(255,61,0,0.02), transparent);
+    border-color: var(--accent);
+    box-shadow: 0 0 30px rgba(255, 15, 15, 0.15);
+    transform: translateY(-5px) scale(1.02);
 }
 
 .service-number {
     display: block;
-    font-size: 0.8rem;
-    color: var(--accent);
+    font-size: 1.5rem; /* Numero grande */
+    font-weight: 700;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--accent); /* Solo contorno rosso */
     margin-bottom: 20px;
-    font-family: monospace;
-    text-shadow: 0 0 10px rgba(255,61,0,0.4);
+    font-family: 'Outfit', sans-serif;
+}
+
+.service-card:hover .service-number {
+    background: var(--accent);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-stroke: 0px;
+    -webkit-text-fill-color: var(--accent);
+    filter: drop-shadow(0 0 10px var(--accent));
 }
 
 .service-card h3 {
     font-size: 1.5rem;
-    font-weight: 400;
+    font-weight: 600;
     margin-bottom: 15px;
     color: var(--text-main);
+    text-transform: uppercase; /* Titoli servizi uppercase */
+    letter-spacing: 1px;
+}
+
+.service-card:hover h3 {
+    color: var(--accent); /* Titolo diventa rosso in hover */
+    transition: 0.3s;
 }
 
 .service-card p {
@@ -205,68 +234,72 @@ ul { list-style: none; }
     text-align: center;
 }
 
+/* TITOLI PAGINA ROSSI COME RICHIESTO */
 .section-header h2 {
-    font-size: 2rem;
-    font-weight: 300;
-    letter-spacing: 2px;
+    font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    color: var(--accent); /* ROSSO DIRETTO */
+    text-shadow: 0 0 20px rgba(255, 15, 15, 0.3);
 }
 
 .works-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    gap: 20px; /* Gap più stretto per look moderno */
     margin-bottom: 60px;
 }
 
 .work-item {
     height: 400px;
-    background-color: #0f0505; /* Placeholder caldo scuro */
+    background-color: #111;
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    border: 1px solid rgba(255,255,255,0.02);
+    border: 1px solid #222;
 }
 
 .work-overlay {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    /* Overlay rosso scuro invece che blu */
-    background: rgba(20, 5, 5, 0.6); 
+    background: rgba(0, 0, 0, 0.5); 
     transition: var(--transition-slow);
 }
 
 .work-item:hover .work-overlay {
-    background: rgba(255, 61, 0, 0.05); /* Tinta arancio leggerissima */
+    background: rgba(255, 15, 15, 0.1); /* Flash rosso */
 }
 
 .work-info {
     position: absolute;
-    bottom: 30px;
-    left: 30px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px;
+    background: linear-gradient(to top, #000, transparent);
     z-index: 2;
 }
 
 .work-info h4 {
-    font-size: 1.5rem;
-    font-weight: 400;
+    font-size: 1.8rem;
+    font-weight: 600;
     margin-bottom: 5px;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.work-item:hover .work-info h4 {
+    color: var(--accent); /* Titolo progetto diventa rosso */
+    padding-left: 10px; /* Piccolo shift a destra */
 }
 
 .view-case {
     font-size: 0.8rem;
     color: var(--accent);
     text-transform: uppercase;
-    letter-spacing: 1px;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: var(--transition-fast);
-    display: block;
-    text-shadow: 0 0 8px rgba(255,61,0,0.6);
-}
-
-.work-item:hover .view-case {
-    opacity: 1;
-    transform: translateY(0);
+    font-weight: 700;
+    letter-spacing: 2px;
 }
 
 .cta-container {
@@ -274,20 +307,24 @@ ul { list-style: none; }
 }
 
 .btn-primary {
-    border: 1px solid var(--text-muted);
-    padding: 15px 40px;
-    font-size: 0.9rem;
+    display: inline-block;
+    border: 2px solid var(--accent);
+    padding: 18px 50px;
+    font-size: 1rem;
+    font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
     transition: var(--transition-fast);
-    color: var(--text-main);
+    color: var(--accent);
+    background: transparent;
+    position: relative;
+    z-index: 1;
 }
 
 .btn-primary:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    box-shadow: 0 0 25px rgba(255, 61, 0, 0.15); /* Glow intenso */
-    background: rgba(255,61,0,0.02);
+    color: #fff;
+    box-shadow: 0 0 40px rgba(255, 15, 15, 0.4);
+    background: var(--accent);
 }
 
 /* LANG SWITCHER */
@@ -300,25 +337,35 @@ ul { list-style: none; }
     align-items: center;
     gap: 10px;
     cursor: pointer;
-    opacity: 0.7;
-    transition: opacity 0.3s;
+    transition: 0.3s;
 }
 
-.lang-switcher:hover { opacity: 1; }
+.lang-icon { width: 20px; height: 20px; filter: invert(1); }
+#currentLang { 
+    font-size: 0.9rem; 
+    font-weight: 700; 
+    color: var(--accent); /* Lingua in rosso */
+}
 
-.lang-icon { width: 20px; height: 20px; filter: grayscale(1); transition: 0.3s; }
-.lang-switcher:hover .lang-icon { filter: grayscale(0); }
-#currentLang { font-size: 0.8rem; letter-spacing: 1px; color: var(--text-muted); }
+/* SCROLL INDICATOR */
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 40px;
+    width: 2px; /* Un po' più spesso */
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+}
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
     .nav-links { gap: 20px; }
-    .nav-links a { font-size: 0.8rem; letter-spacing: 1px; }
+    .nav-links a { font-size: 0.8rem; }
     
-    .hero-name { font-size: 2.5rem; }
-    .hero-tagline { font-size: 0.9rem; }
+    .hero-name { font-size: 3.5rem; letter-spacing: -1px; }
     
     .grid-3, .works-grid { grid-template-columns: 1fr; }
-    
     .work-item { height: 300px; }
 }
