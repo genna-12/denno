@@ -1,23 +1,22 @@
 :root {
-    /* PALETTE: COSMIC NOIR */
-    --bg-color: #05010a;      /* Nero profondo violaceo */
-    --bg-secondary: #0f021f;  /* Background per card */
+    /* BACKGROUNDS */
+    --bg-color: #050000;      /* Nero con una punta impercettibile di rosso */
+    --bg-secondary: #1a0505;  /* Rosso scuro profondo per sfumature */
     
+    /* TYPOGRAPHY */
     --text-main: #ffffff;
-    --text-muted: #d8b4fe;    /* Lavanda pallido elegante */
+    --text-muted: #a89f9f;    /* Grigio caldo invece che freddo */
     
-    --accent: #a855f7;        /* Viola elettrico vibrante */
-    --accent-dim: #7e22ce;    /* Viola scuro per sfumature */
-    --border-color: rgba(168, 85, 247, 0.15); /* Bordi sottili */
+    /* ACCENTS (Il cuore del cambiamento) */
+    --accent: #ff3d00;        /* Arancio Lava intenso / Rosso Fuoco */
+    --accent-glow: #ff3d00;   /* Colore per i bagliori */
+    --gradient-text: linear-gradient(to right, #ffffff, #ff9e80); /* Bianco -> Pesca caldo */
     
     /* SYSTEM */
     --font-main: 'Outfit', sans-serif;
-    --transition-slow: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    --transition-slow: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
     --transition-fast: all 0.3s ease;
     --nav-height: 80px;
-    
-    /* GLOWS */
-    --glow-shadow: 0 0 30px rgba(168, 85, 247, 0.15);
 }
 
 * {
@@ -35,8 +34,8 @@ body {
 }
 
 body::selection {
-    background-color: var(--accent);
-    color: #fff;
+    background-color: var(--accent); /* Quando selezioni il testo */
+    color: #000;
 }
 
 a { text-decoration: none; color: inherit; }
@@ -59,11 +58,11 @@ ul { list-style: none; }
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    background: rgba(5, 1, 10, 0.6); /* Vetro scuro */
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(5, 0, 0, 0.6); /* Base rossastra impercettibile */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     transition: transform 0.4s ease-in-out, background 0.4s ease;
-    border-bottom: 1px solid rgba(168, 85, 247, 0.05);
+    border-bottom: 1px solid rgba(255, 61, 0, 0.05); /* Linea sottilissima arancio */
 }
 
 .navbar.nav-hidden {
@@ -81,13 +80,12 @@ ul { list-style: none; }
     letter-spacing: 2px;
     color: var(--text-muted);
     transition: var(--transition-fast);
-    opacity: 0.8;
+    position: relative;
 }
 
 .nav-links a:hover {
     color: var(--text-main);
-    opacity: 1;
-    text-shadow: 0 0 12px rgba(168, 85, 247, 0.6); /* Glow Viola */
+    text-shadow: 0 0 15px rgba(255, 61, 0, 0.5); /* Glow Arancio */
 }
 
 /* HERO SECTION */
@@ -105,16 +103,11 @@ ul { list-style: none; }
     position: absolute;
     width: 200%;
     height: 200%;
-    /* Gradiente Nebulosa */
-    background: radial-gradient(circle at 50% 50%, #2e054e 0%, #05010a 65%);
-    opacity: 0.6;
+    /* Gradiente modificato: Dal rosso profondo al nero assoluto */
+    background: radial-gradient(circle at 50% 50%, #2f0a0a 0%, #050000 60%);
+    opacity: 0.5;
     z-index: -1;
-    animation: cosmicPulse 8s infinite alternate ease-in-out;
-}
-
-@keyframes cosmicPulse {
-    0% { transform: scale(1); opacity: 0.5; }
-    100% { transform: scale(1.05); opacity: 0.7; }
+    animation: pulseGradient 10s infinite alternate;
 }
 
 .hero-content {
@@ -123,21 +116,20 @@ ul { list-style: none; }
 }
 
 .hero-name {
-    font-size: 5rem;
-    font-weight: 500;
+    font-size: 4.5rem;
+    font-weight: 600; /* Leggermente più bold per impatto */
     letter-spacing: -2px;
     margin-bottom: 1rem;
-    background: linear-gradient(to right, #fff, #e9d5ff); /* Bianco -> Lilla */
+    background: var(--gradient-text);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.2));
 }
 
 .hero-tagline {
     font-size: 1.2rem;
     color: var(--text-muted);
-    letter-spacing: 5px;
+    letter-spacing: 4px;
     text-transform: uppercase;
     font-weight: 300;
     margin-bottom: 2rem;
@@ -147,63 +139,51 @@ ul { list-style: none; }
     width: 300px;
     height: 150px;
     margin: 0 auto;
-    filter: drop-shadow(0 0 5px rgba(168, 85, 247, 0.3)); /* Leggero alone viola sulla firma */
+    /* Opzionale: filtro se la firma originale è nera e vuoi farla arancio */
+    /* filter: drop-shadow(0 0 5px rgba(255,61,0,0.3)); */
 }
 
 /* SERVICES */
 .services {
-    padding: 130px 0;
+    padding: 120px 0;
     background: var(--bg-color);
-    position: relative;
-}
-
-/* Glow decorativo dietro i servizi */
-.services::before {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%; height: 80%;
-    background: radial-gradient(circle, rgba(126, 34, 206, 0.05) 0%, transparent 70%);
-    z-index: 0;
-    pointer-events: none;
 }
 
 .grid-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
-    position: relative;
-    z-index: 1;
 }
 
 .service-card {
-    background: rgba(15, 2, 31, 0.4);
-    border: 1px solid var(--border-color);
-    padding: 45px;
+    background: rgba(255,255,255,0.01);
+    border: 1px solid rgba(255,255,255,0.03);
+    padding: 40px;
     transition: var(--transition-slow);
     cursor: default;
-    border-radius: 2px; /* Angoli quasi vivi ma non taglienti */
+    position: relative;
+    overflow: hidden;
 }
 
+/* Effetto Hover "Brace Ardente" */
 .service-card:hover {
-    border-color: var(--accent);
-    box-shadow: var(--glow-shadow);
-    transform: translateY(-8px);
-    background: rgba(15, 2, 31, 0.8);
+    border-color: rgba(255, 61, 0, 0.4);
+    box-shadow: 0 0 40px rgba(255, 61, 0, 0.08); /* Glow rosso diffuso */
+    transform: translateY(-5px);
+    background: linear-gradient(to bottom right, rgba(255,61,0,0.02), transparent);
 }
 
 .service-number {
     display: block;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: var(--accent);
     margin-bottom: 20px;
     font-family: monospace;
-    opacity: 0.8;
+    text-shadow: 0 0 10px rgba(255,61,0,0.4);
 }
 
 .service-card h3 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 400;
     margin-bottom: 15px;
     color: var(--text-main);
@@ -212,82 +192,76 @@ ul { list-style: none; }
 .service-card p {
     font-size: 0.95rem;
     color: var(--text-muted);
-    line-height: 1.7;
-    font-weight: 300;
+    line-height: 1.6;
 }
 
 /* WORKS SPOILER */
 .works-teaser {
-    padding: 0 0 130px 0;
+    padding: 0 0 120px 0;
 }
 
 .section-header {
-    margin-bottom: 70px;
+    margin-bottom: 60px;
     text-align: center;
 }
 
 .section-header h2 {
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 300;
-    letter-spacing: 3px;
-    background: linear-gradient(to bottom, #fff, #c4b5fd);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
 }
 
 .works-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
-    margin-bottom: 70px;
+    margin-bottom: 60px;
 }
 
 .work-item {
-    height: 420px;
-    background-color: #11051c; /* Placeholder viola scurissimo */
+    height: 400px;
+    background-color: #0f0505; /* Placeholder caldo scuro */
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    border: 1px solid rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255,255,255,0.02);
 }
 
 .work-overlay {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    /* Overlay sfumato viola scuro */
-    background: linear-gradient(to top, rgba(5, 1, 10, 0.9), rgba(5, 1, 10, 0.2));
+    /* Overlay rosso scuro invece che blu */
+    background: rgba(20, 5, 5, 0.6); 
     transition: var(--transition-slow);
 }
 
 .work-item:hover .work-overlay {
-    background: linear-gradient(to top, rgba(5, 1, 10, 0.8), rgba(168, 85, 247, 0.1));
+    background: rgba(255, 61, 0, 0.05); /* Tinta arancio leggerissima */
 }
 
 .work-info {
     position: absolute;
-    bottom: 35px;
-    left: 35px;
+    bottom: 30px;
+    left: 30px;
     z-index: 2;
 }
 
 .work-info h4 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 400;
-    margin-bottom: 8px;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    margin-bottom: 5px;
 }
 
 .view-case {
     font-size: 0.8rem;
     color: var(--accent);
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     opacity: 0;
     transform: translateY(10px);
     transition: var(--transition-fast);
     display: block;
-    font-weight: 600;
+    text-shadow: 0 0 8px rgba(255,61,0,0.6);
 }
 
 .work-item:hover .view-case {
@@ -300,22 +274,20 @@ ul { list-style: none; }
 }
 
 .btn-primary {
-    border: 1px solid var(--accent);
-    padding: 16px 45px;
+    border: 1px solid var(--text-muted);
+    padding: 15px 40px;
     font-size: 0.9rem;
     letter-spacing: 2px;
     text-transform: uppercase;
     transition: var(--transition-fast);
     color: var(--text-main);
-    background: rgba(168, 85, 247, 0.05); /* Leggerissima tinta */
-    position: relative;
-    overflow: hidden;
 }
 
 .btn-primary:hover {
-    background: var(--accent);
-    color: #fff;
-    box-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: 0 0 25px rgba(255, 61, 0, 0.15); /* Glow intenso */
+    background: rgba(255,61,0,0.02);
 }
 
 /* LANG SWITCHER */
@@ -334,28 +306,19 @@ ul { list-style: none; }
 
 .lang-switcher:hover { opacity: 1; }
 
-.lang-icon { width: 20px; height: 20px; filter: hue-rotate(45deg); /* Tinta leggera */ }
+.lang-icon { width: 20px; height: 20px; filter: grayscale(1); transition: 0.3s; }
+.lang-switcher:hover .lang-icon { filter: grayscale(0); }
 #currentLang { font-size: 0.8rem; letter-spacing: 1px; color: var(--text-muted); }
-
-/* SCROLL INDICATOR */
-.scroll-indicator {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 50px;
-    width: 1px;
-    background: linear-gradient(to bottom, transparent, var(--accent));
-}
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
     .nav-links { gap: 20px; }
     .nav-links a { font-size: 0.8rem; letter-spacing: 1px; }
     
-    .hero-name { font-size: 3rem; }
-    .hero-tagline { font-size: 0.9rem; letter-spacing: 3px; }
+    .hero-name { font-size: 2.5rem; }
+    .hero-tagline { font-size: 0.9rem; }
     
     .grid-3, .works-grid { grid-template-columns: 1fr; }
-    .work-item { height: 350px; }
+    
+    .work-item { height: 300px; }
 }
