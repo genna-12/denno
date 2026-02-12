@@ -1,9 +1,18 @@
 :root {
-    --bg-color: #050505;
-    --bg-secondary: #0b0f1c;
+    /* BACKGROUNDS */
+    --bg-color: #050000;      /* Nero con una punta impercettibile di rosso */
+    --bg-secondary: #1a0505;  /* Rosso scuro profondo per sfumature */
+    
+    /* TYPOGRAPHY */
     --text-main: #ffffff;
-    --text-muted: #8892b0;
-    --accent: #00f3ff; /* Blu elettrico sottile */
+    --text-muted: #a89f9f;    /* Grigio caldo invece che freddo */
+    
+    /* ACCENTS (Il cuore del cambiamento) */
+    --accent: #ff3d00;        /* Arancio Lava intenso / Rosso Fuoco */
+    --accent-glow: #ff3d00;   /* Colore per i bagliori */
+    --gradient-text: linear-gradient(to right, #ffffff, #ff9e80); /* Bianco -> Pesca caldo */
+    
+    /* SYSTEM */
     --font-main: 'Outfit', sans-serif;
     --transition-slow: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
     --transition-fast: all 0.3s ease;
@@ -22,6 +31,16 @@ body {
     font-family: var(--font-main);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+}
+
+body::selection {
+    background-color: var(--accent);
+    color: #000;
+}
+
+body::-moz-selection {
+    background-color: var(--accent);
+    color: #000;
 }
 
 a { text-decoration: none; color: inherit; }
@@ -44,11 +63,11 @@ ul { list-style: none; }
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    background: rgba(5, 5, 5, 0.6);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(5, 0, 0, 0.6); /* Base rossastra impercettibile */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     transition: transform 0.4s ease-in-out, background 0.4s ease;
-    border-bottom: 1px solid rgba(255,255,255,0.02);
+    border-bottom: 1px solid rgba(255, 61, 0, 0.05); /* Linea sottilissima arancio */
 }
 
 .navbar.nav-hidden {
@@ -71,7 +90,7 @@ ul { list-style: none; }
 
 .nav-links a:hover {
     color: var(--text-main);
-    text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+    text-shadow: 0 0 15px rgba(255, 61, 0, 0.5); /* Glow Arancio */
 }
 
 /* HERO SECTION */
@@ -89,8 +108,9 @@ ul { list-style: none; }
     position: absolute;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle at 50% 50%, #0a192f 0%, #050505 50%);
-    opacity: 0.4;
+    /* Gradiente modificato: Dal rosso profondo al nero assoluto */
+    background: radial-gradient(circle at 50% 50%, #2f0a0a 0%, #050000 60%);
+    opacity: 0.5;
     z-index: -1;
     animation: pulseGradient 10s infinite alternate;
 }
@@ -102,10 +122,10 @@ ul { list-style: none; }
 
 .hero-name {
     font-size: 4.5rem;
-    font-weight: 500;
+    font-weight: 600; /* Leggermente più bold per impatto */
     letter-spacing: -2px;
     margin-bottom: 1rem;
-    background: linear-gradient(to right, #fff, #a5b4fc);
+    background: var(--gradient-text);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -124,6 +144,8 @@ ul { list-style: none; }
     width: 300px;
     height: 150px;
     margin: 0 auto;
+    /* Opzionale: filtro se la firma originale è nera e vuoi farla arancio */
+    /* filter: drop-shadow(0 0 5px rgba(255,61,0,0.3)); */
 }
 
 /* SERVICES */
@@ -139,17 +161,21 @@ ul { list-style: none; }
 }
 
 .service-card {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.01);
+    border: 1px solid rgba(255,255,255,0.03);
     padding: 40px;
     transition: var(--transition-slow);
     cursor: default;
+    position: relative;
+    overflow: hidden;
 }
 
+/* Effetto Hover "Brace Ardente" */
 .service-card:hover {
-    border-color: rgba(0, 243, 255, 0.3);
-    box-shadow: 0 0 30px rgba(0, 243, 255, 0.05);
+    border-color: rgba(255, 61, 0, 0.4);
+    box-shadow: 0 0 40px rgba(255, 61, 0, 0.08); /* Glow rosso diffuso */
     transform: translateY(-5px);
+    background: linear-gradient(to bottom right, rgba(255,61,0,0.02), transparent);
 }
 
 .service-number {
@@ -158,6 +184,7 @@ ul { list-style: none; }
     color: var(--accent);
     margin-bottom: 20px;
     font-family: monospace;
+    text-shadow: 0 0 10px rgba(255,61,0,0.4);
 }
 
 .service-card h3 {
@@ -198,21 +225,23 @@ ul { list-style: none; }
 
 .work-item {
     height: 400px;
-    background-color: #111; /* Placeholder per immagine */
+    background-color: #0f0505; /* Placeholder caldo scuro */
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.02);
 }
 
 .work-overlay {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(11, 15, 28, 0.4);
+    /* Overlay rosso scuro invece che blu */
+    background: rgba(20, 5, 5, 0.6); 
     transition: var(--transition-slow);
 }
 
 .work-item:hover .work-overlay {
-    background: rgba(11, 15, 28, 0.1);
+    background: rgba(255, 61, 0, 0.05); /* Tinta arancio leggerissima */
 }
 
 .work-info {
@@ -232,10 +261,12 @@ ul { list-style: none; }
     font-size: 0.8rem;
     color: var(--accent);
     text-transform: uppercase;
+    letter-spacing: 1px;
     opacity: 0;
     transform: translateY(10px);
     transition: var(--transition-fast);
     display: block;
+    text-shadow: 0 0 8px rgba(255,61,0,0.6);
 }
 
 .work-item:hover .view-case {
@@ -254,12 +285,14 @@ ul { list-style: none; }
     letter-spacing: 2px;
     text-transform: uppercase;
     transition: var(--transition-fast);
+    color: var(--text-main);
 }
 
 .btn-primary:hover {
     border-color: var(--accent);
     color: var(--accent);
-    box-shadow: 0 0 20px rgba(0, 243, 255, 0.1);
+    box-shadow: 0 0 25px rgba(255, 61, 0, 0.15); /* Glow intenso */
+    background: rgba(255,61,0,0.02);
 }
 
 /* LANG SWITCHER */
@@ -278,8 +311,9 @@ ul { list-style: none; }
 
 .lang-switcher:hover { opacity: 1; }
 
-.lang-icon { width: 20px; height: 20px; }
-#currentLang { font-size: 0.8rem; letter-spacing: 1px; }
+.lang-icon { width: 20px; height: 20px; filter: grayscale(1); transition: 0.3s; }
+.lang-switcher:hover .lang-icon { filter: grayscale(0); }
+#currentLang { font-size: 0.8rem; letter-spacing: 1px; color: var(--text-muted); }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {

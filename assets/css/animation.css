@@ -55,5 +55,6 @@
     transform: translateX(-50%);
     height: 40px;
     width: 1px;
+    /* Usa la variabile accent che ora è arancio/rosso */
     background: linear-gradient(to bottom, transparent, var(--accent));
 }
