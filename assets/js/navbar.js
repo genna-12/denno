@@ -1,22 +1,22 @@
-let lastScrollTop = 0;
+// assets/js/navbar.js (Update)
 const navbar = document.getElementById('navbar');
+let lastScrollTop = 0;
 
 window.addEventListener('scroll', () => {
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
+    // 1. Gestione Background (Glass Effect)
+    if (scrollTop > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+
+    // 2. Gestione Hide/Show
     if (scrollTop > lastScrollTop && scrollTop > 100) {
-        // Scroll Verso il Basso -> Nascondi
         navbar.classList.add('nav-hidden');
     } else {
-        // Scroll Verso l'Alto -> Mostra
         navbar.classList.remove('nav-hidden');
-    }
-    
-    // Aggiungi background scuro se non si è in cima
-    if (scrollTop > 50) {
-        navbar.style.background = 'rgba(5, 5, 5, 0.9)';
-    } else {
-        navbar.style.background = 'rgba(5, 5, 5, 0.6)';
     }
 
     lastScrollTop = scrollTop;
