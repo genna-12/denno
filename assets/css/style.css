@@ -23,6 +23,11 @@
     box-sizing: border-box;
 }
 
+/* --- SCROLLBAR HIDDEN --- */
+html, body { scrollbar-width: none; -ms-overflow-style: none; }
+html { scroll-behavior: smooth; }
+html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar { display: none; width: 0; height: 0; }
+
 html {
     scroll-behavior: smooth;
 }
@@ -188,32 +193,64 @@ ul { list-style: none; }
     100% { transform: translateY(100%); }
 }
 
-/* 3. SERVICES (GRID PULITA) */
+/* --- AGGIORNAMENTO SERVICES CON EFFETTI GLOW --- */
+
 .services {
     padding: 160px 0;
     background: var(--bg-color);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effetto luce ambientale soffusa sullo sfondo della sezione */
+.services::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 40%;
+    height: 40%;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.03) 0%, transparent 70%);
+    pointer-events: none;
 }
 
 .grid-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2px; /* Gap minimo per effetto griglia tecnica */
-    background: rgba(255,255,255,0.03); /* Linee sottili della griglia */
+    gap: 1px; /* Linea ancora più sottile per precisione chirurgica */
+    background: rgba(255, 255, 255, 0.05); 
 }
 
 .service-card {
-    background: var(--bg-color); /* Torna nero per coprire le linee */
-    padding: 60px 40px;
-    transition: all 0.6s var(--ease-smooth);
-    border: 1px solid transparent;
-    cursor: default;
+    background: var(--bg-color);
+    padding: 80px 50px;
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    border: none;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Hover sofisticato: la card si "accende" leggermente */
+/* Linea laser superiore che appare in hover */
+.service-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--glow), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s var(--ease-smooth);
+}
+
+.service-card:hover::after {
+    transform: translateX(100%);
+}
+
 .service-card:hover {
     background: var(--bg-card);
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    /* Glow diffuso che emana dalla card */
+    box-shadow: 0 0 50px rgba(0, 240, 255, 0.03);
 }
 
 .service-number {
@@ -221,27 +258,61 @@ ul { list-style: none; }
     font-size: 0.7rem;
     color: var(--text-muted);
     margin-bottom: 30px;
-    font-family: monospace; /* Tocco tecnico */
+    font-family: 'JetBrains Mono', monospace; /* Font tecnico per eccellenza */
+    letter-spacing: 2px;
+    transition: color 0.4s ease;
 }
 
 .service-card:hover .service-number {
-    color: var(--glow); /* Diventa Ciano */
-    text-shadow: 0 0 8px var(--glow);
+    color: var(--glow);
+    text-shadow: 0 0 12px rgba(0, 240, 255, 0.8);
 }
 
 .service-card h3 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 300;
     margin-bottom: 20px;
     color: var(--text-main);
+    letter-spacing: -0.02em;
+    transition: transform 0.4s ease;
+}
+
+/* Leggera spinta del titolo verso destra in hover */
+.service-card:hover h3 {
+    transform: translateX(10px);
 }
 
 .service-card p {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--text-muted);
-    line-height: 1.8;
+    line-height: 1.7;
     font-weight: 300;
     max-width: 90%;
+    transition: color 0.4s ease;
+}
+
+.service-card:hover p {
+    color: rgba(242, 242, 242, 0.7); /* Il testo diventa leggermente più leggibile */
+}
+
+/* Raffinatezza extra: un piccolo punto "pixel" nell'angolo */
+.service-card::before {
+    content: '';
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 4px;
+    height: 4px;
+    background: var(--text-muted);
+    opacity: 0.2;
+    transition: all 0.4s ease;
+}
+
+.service-card:hover::before {
+    background: var(--glow);
+    opacity: 1;
+    box-shadow: 0 0 10px var(--glow);
+    border-radius: 50%;
 }
 
 /* 4. WORKS (IMMAGINE CINEMATOGRAFICA) */
