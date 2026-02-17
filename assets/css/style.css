@@ -24,6 +24,30 @@
     cursor: none !important;
 }
 
+main, section, .container {
+    background-color: transparent !important;
+    background: transparent !important;
+}
+
+section {
+    border: none !important;
+    outline: none !important;
+}
+
+/* --- SFONDO UNICO, FISSO E IMMOBILE --- */
+.depth-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -999;
+    background: radial-gradient(circle at center, #080808 0%, #020202 50%, #000000 100%);
+    /* Rimuovi ogni altra proprietà di background qui */
+    animation: none !important;
+    transform: none !important;
+}
+
 /* --- SCROLLBAR HIDDEN --- */
 html, body { scrollbar-width: none; -ms-overflow-style: none; }
 html { scroll-behavior: smooth; }
@@ -33,8 +57,17 @@ html {
     scroll-behavior: smooth;
 }
 
+.hero, 
+.services, 
+.works-teaser, 
+main {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
 body {
-    background-color: var(--bg-color);
+    background-color: transparent !important;
     color: var(--text-main);
     font-family: var(--font-main);
     overflow-x: hidden;
@@ -156,22 +189,6 @@ body.cursor-active .trail-dot {
     overflow: hidden;
 }
 
-/* Un bagliore molto sottile che si muove nel buio */
-.hero-bg {
-    position: absolute;
-    width: 150%;
-    height: 150%;
-    background: radial-gradient(circle at 50% 50%, rgba(10, 20, 30, 0.4) 0%, #020202 60%);
-    opacity: 0.6;
-    z-index: -1;
-    animation: breathingDarkness 15s infinite alternate ease-in-out;
-}
-
-@keyframes breathingDarkness {
-    0% { transform: scale(1); opacity: 0.5; }
-    100% { transform: scale(1.1); opacity: 0.7; }
-}
-
 .hero-content {
     text-align: center;
     z-index: 2;
@@ -235,10 +252,10 @@ body.cursor-active .trail-dot {
 }
 
 /* --- AGGIORNAMENTO SERVICES CON EFFETTI GLOW --- */
-
 .services {
     padding: 160px 0;
-    background: var(--bg-color);
+    /* Rimuovi background: var(--bg-color); */
+    background: transparent; /* Lo sfondo deve essere trasparente per vedere quello fisso */
     position: relative;
     overflow: hidden;
 }
@@ -251,7 +268,7 @@ body.cursor-active .trail-dot {
     left: -10%;
     width: 40%;
     height: 40%;
-    background: radial-gradient(circle, rgba(0, 240, 255, 0.03) 0%, transparent 70%);
+    /*background: radial-gradient(circle, rgba(0, 240, 255, 0.03) 0%, transparent 70%);*/
     pointer-events: none;
 }
 
@@ -393,10 +410,12 @@ body.cursor-active .trail-dot {
 
 .work-item {
     height: 500px; /* Molto alto */
-    background-color: #0a0a0a;
+    background-color: transparent !important;
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    background-color: rgba(10, 15, 20, 0.6); 
+    backdrop-filter: blur(10px);
     /* Maschera per l'immagine */
 }
 
