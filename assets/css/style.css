@@ -21,6 +21,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    cursor: none !important;
 }
 
 /* --- SCROLLBAR HIDDEN --- */
@@ -48,6 +49,46 @@ body::selection {
 
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
+
+/* --- CURSORE NEON PURO --- */
+
+/* 1. Stato Normale (Bianco Puro + Doppio Glow) */
+.trail-dot {
+    position: fixed;
+    top: 0; left: 0;
+    width: 6px; height: 6px;
+    
+    /* Bianco assoluto */
+    background-color: #ffffff;
+    
+    /* DOPPIO GLOW: Uno stretto e forte, uno largo e diffuso */
+    box-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.9), 
+        0 0 20px rgba(255, 255, 255, 0.5);
+    
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    
+    /* RIMOSSO mix-blend-mode per avere colori puri */
+    mix-blend-mode: normal; 
+    
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* 2. Stato "Attivo" (Ciano Laser + Doppio Glow) */
+body.cursor-active .trail-dot {
+    background-color: #00f0ff; /* Ciano Elettrico */
+    
+    /* DOPPIO GLOW CIANO: Molto intenso */
+    box-shadow: 
+        0 0 15px #00f0ff, 
+        0 0 30px #00f0ff; 
+        
+    /* Opzionale: Diventa un po' più grande quando attivo */
+    transform: translate(-50%, -50%) scale(1.2);
+}
 
 /* LAYOUT UTILS */
 .container {
@@ -481,4 +522,14 @@ ul { list-style: none; }
     .grid-3, .works-grid { grid-template-columns: 1fr; gap: 40px; }
     .work-item { height: 350px; }
     .section-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+
+    /* Ripristina il comportamento touch su mobile */
+    * { 
+        cursor: auto !important; 
+    }
+    
+    /* Nascondi il tuo cursore personalizzato su mobile */
+    .trail-dot { 
+        display: none !important; 
+    }
 }
