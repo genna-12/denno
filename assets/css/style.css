@@ -1,7 +1,7 @@
 :root {
     /* --- PALETTE: VOID & PHOTON --- */
     --bg-color: #020202;       /* Nero "Buco Nero" */
-    --bg-card: #0a0a24;        /* Grigio Antracite scurissimo */
+    --bg-card: #f30b0b;        /* Grigio Antracite scurissimo */
     /*080808*/
     --text-main: #f2f2f2;      /* Bianco "Photon" */
     --text-muted: #666666;     /* Grigio Acciaio scuro */
@@ -63,8 +63,8 @@ ul { list-style: none; }
     
     /* DOPPIO GLOW: Uno stretto e forte, uno largo e diffuso */
     box-shadow: 
-        0 0 10px rgba(255, 255, 255, 0.9), 
-        0 0 20px rgba(255, 255, 255, 0.5);
+        0 0 8px rgba(255, 255, 255, 0.9), 
+        0 0 16px rgba(255, 255, 255, 0.5);
     
     border-radius: 50%;
     pointer-events: none;
