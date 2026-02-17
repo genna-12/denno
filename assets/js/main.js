@@ -87,6 +87,36 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(animateTrail);
     };
 
+    /* 3D TILT LOGIC */
+    const tiltCards = document.querySelectorAll('.tilt-card');
+
+    tiltCards.forEach(card => {
+        // Quando il mouse si muove sopra la card
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            
+            // Calcola coordinate mouse relative alla card
+            const x = e.clientX - rect.left; 
+            const y = e.clientY - rect.top;
+            
+            // Trova il centro
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            // Calcola rotazione (moltiplica per 7 o 10 per aumentare l'effetto)
+            const rotateX = ((y - centerY) / centerY) * -7; // Asse X
+            const rotateY = ((x - centerX) / centerX) * 7;  // Asse Y
+
+            // Applica
+            card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        // Reset quando esci
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = `rotateX(0deg) rotateY(0deg)`;
+        });
+    });
+
     // =================================================================
     // 5. GESTIONE INTERATTIVA CURSORE (BIANCO -> CIANO)
     // =================================================================

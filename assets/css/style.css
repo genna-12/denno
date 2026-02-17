@@ -29,11 +29,6 @@ main, section, .container {
     background: transparent !important;
 }
 
-section {
-    border: none !important;
-    outline: none !important;
-}
-
 /* --- SFONDO UNICO, FISSO E IMMOBILE --- */
 .depth-background {
     position: fixed;
@@ -373,9 +368,11 @@ body.cursor-active .trail-dot {
     border-radius: 50%;
 }
 
-/* 4. WORKS (IMMAGINE CINEMATOGRAFICA) */
+/* --- 4. WORKS SECTION (MERGE PERFETTO: LAYOUT ORIGINALE + 3D) --- */
+
 .works-teaser {
     padding: 0 0 160px 0;
+    background: transparent !important; /* Fix per sfondo unico */
 }
 
 .section-header {
@@ -404,47 +401,75 @@ body.cursor-active .trail-dot {
 .works-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 60px; /* Molto spazio tra i lavori */
-    margin-bottom: 100px;
+    gap: 60px; /* Spazio tra le card */
+    
+    /* ECCO IL FIX CHE MANCAVA: */
+    margin-bottom: 100px; /* Spazio sotto i lavori (stacca il bottone) */
+    
+    /* Abilita il 3D */
+    perspective: 1000px; 
 }
 
 .work-item {
-    height: 500px; /* Molto alto */
-    background-color: transparent !important;
+    height: 500px;
     position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    background-color: rgba(10, 15, 20, 0.6); 
-    backdrop-filter: blur(10px);
-    /* Maschera per l'immagine */
+    cursor: none; /* Per il tuo custom cursor */
+    
+    /* Configurazione 3D */
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out; /* Movimento fluido tilt */
+    
+    /* Sfondo trasparente (l'immagine è nel div figlio .work-image) */
+    background: transparent; 
+    
+    /* Importante: nasconde bordi immagine se esce durante il tilt */
+    overflow: hidden; 
+}
+
+/* L'immagine deve essere un div separato (come nel nuovo HTML) */
+.work-image {
+    width: 100%; height: 100%;
+    background-size: cover; background-position: center;
+    transition: transform 0.5s ease;
+    
+    /* La spingiamo indietro per effetto profondità */
+    transform: scale(1.05); /* Zoom leggero per evitare bordi bianchi in tilt */
 }
 
 .work-overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
     background: #000;
     opacity: 0.2;
     transition: opacity 0.6s var(--ease-smooth);
+    pointer-events: none;
 }
 
 .work-item:hover .work-overlay {
-    opacity: 0; /* Rimuovi overlay in hover per vedere l'immagine pura */
+    opacity: 0; /* Rimuovi overlay in hover */
 }
 
-/* Info minimaliste che appaiono */
+/* --- INFO TESTO (TUE ANIMAZIONI ORIGINALI MANTENUTE) --- */
 .work-info {
     position: absolute;
     bottom: 40px;
     left: 40px;
     z-index: 2;
-    mix-blend-mode: difference; /* Testo che si adatta al contenuto sotto */
+    mix-blend-mode: difference;
+    pointer-events: none;
+    
+    /* MAGIC TRICK: Questo fa "galleggiare" il testo */
+    transform: translateZ(50px);
+    pointer-events: none;
 }
 
 .work-info h4 {
     font-size: 2rem;
     font-weight: 300;
     margin-bottom: 10px;
-    color: #fff;
+    mix-blend-mode: difference;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    
+    /* Tua animazione originale */
     transform: translateY(20px);
     opacity: 0;
     transition: all 0.5s var(--ease-smooth);
@@ -455,6 +480,8 @@ body.cursor-active .trail-dot {
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 2px;
+    
+    /* Tua animazione originale */
     transform: translateY(20px);
     opacity: 0;
     transition: all 0.5s var(--ease-smooth) 0.1s;
@@ -468,10 +495,10 @@ body.cursor-active .trail-dot {
     font-size: 1.2rem;
 }
 
-/* Animazione Hover */
+/* TRIGGER ANIMAZIONI HOVER */
 .work-item:hover .work-info h4,
 .work-item:hover .view-case {
-    transform: translateY(0);
+    transform: translateY(0); /* Il testo sale */
     opacity: 1;
 }
 
