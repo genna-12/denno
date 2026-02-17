@@ -1,19 +1,25 @@
 :root {
     /* --- PALETTE: VOID & PHOTON --- */
-    --bg-color: #020202;       /* Nero "Buco Nero" */
-    --bg-card: #080808;        /* Grigio Antracite scurissimo */
-    
-    --text-main: #f2f2f2;      /* Bianco "Photon" */
-    --text-muted: #666666;     /* Grigio Acciaio scuro */
-    
+    --bg-color: #020202;
+    /* Nero "Buco Nero" */
+    --bg-card: #080808;
+    /* Grigio Antracite scurissimo */
+
+    --text-main: #f2f2f2;
+    /* Bianco "Photon" */
+    --text-muted: #666666;
+    /* Grigio Acciaio scuro */
+
     /* L'ACCENTO "LASER" */
-    --accent: #ffffff;         /* L'azione principale è bianca */
-    --glow: #00f0ff;          /* Ciano Etereo (appare solo in hover) */
-    
+    --accent: #ffffff;
+    /* L'azione principale è bianca */
+    --glow: #00f0ff;
+    /* Ciano Etereo (appare solo in hover) */
+
     /* SYSTEM & PHYSICS */
     --font-main: 'Outfit', sans-serif;
     /* Questa curva di Bezier è il segreto della fluidità "Apple-style" */
-    --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1); 
+    --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
     --nav-height: 90px;
 }
 
@@ -24,7 +30,9 @@
     cursor: none !important;
 }
 
-main, section, .container {
+main,
+section,
+.container {
     background-color: transparent !important;
     background: transparent !important;
 }
@@ -44,17 +52,31 @@ main, section, .container {
 }
 
 /* --- SCROLLBAR HIDDEN --- */
-html, body { scrollbar-width: none; -ms-overflow-style: none; }
-html { scroll-behavior: smooth; }
-html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar { display: none; width: 0; height: 0; }
+html,
+body {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
 
 html {
     scroll-behavior: smooth;
 }
 
-.hero, 
-.services, 
-.works-teaser, 
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.hero,
+.services,
+.works-teaser,
 main {
     background: transparent !important;
     border: none !important;
@@ -75,52 +97,224 @@ body::selection {
     color: var(--bg-color);
 }
 
-a { text-decoration: none; color: inherit; }
-ul { list-style: none; }
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* --- 5. FOOTER (STILE COERENTE + BACK TO TOP) --- */
+.main-footer {
+    padding: 100px 0 50px 0;
+    background: transparent;
+    /* Fondamentale per vedere lo sfondo depth */
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 80px;
+}
+
+.footer-logo {
+    font-size: 3rem;
+    font-weight: 200;
+    letter-spacing: -2px;
+    margin-bottom: 10px;
+    background: linear-gradient(180deg, #fff, #444);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.footer-links {
+    display: flex;
+    gap: 100px;
+}
+
+.footer-group h4 {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    /* */
+    margin-bottom: 25px;
+}
+
+.footer-group ul li {
+    margin-bottom: 12px;
+}
+
+.footer-group a {
+    font-size: 0.9rem;
+    color: var(--text-main);
+    /* */
+    transition: all 0.3s var(--ease-smooth);
+    /* */
+    opacity: 0.6;
+}
+
+.footer-group a:hover {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.footer-bottom {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    /* Tre colonne: la centrale prende solo lo spazio necessario */
+    align-items: center;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+}
+
+/* Allineamenti specifici per le tre parti */
+.footer-bottom p:first-child {
+    text-align: left;
+}
+
+.footer-bottom p:nth-child(2) {
+    text-align: center;
+    white-space: nowrap;
+    /* Evita che il copyright vada su due righe */
+}
+
+.footer-bottom #back-to-top {
+    text-align: right;
+    justify-self: end;
+    /* Spinge il bottone tutto a destra */
+}
+
+.footer-logo:hover {
+    animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+    text-shadow: 0.05em 0 0 rgba(255, 0, 0, .75),
+        -0.025em -0.05em 0 rgba(0, 255, 0, .75),
+        0.025em 0.05em 0 rgba(0, 0, 255, .75);
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        transform: translate(-2px, -2px);
+    }
+
+    60% {
+        transform: translate(2px, 2px);
+    }
+
+    80% {
+        transform: translate(2px, -2px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+#back-to-top {
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    cursor: pointer;
+    font-family: var(--font-main);
+    letter-spacing: 2px;
+    transition: all 0.4s var(--ease-smooth);
+    /* */
+    position: relative;
+    display: inline-block;
+}
+
+#back-to-top:hover {
+    transform: translateY(-5px);
+    /* Effetto sollevamento */
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    /* Bagliore bianco */
+    color: var(--accent);
+    /* */
+}
+
+/* Una piccola linea sotto che appare in hover */
+#back-to-top::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--text-main);
+    /* */
+    transition: width 0.4s var(--ease-smooth);
+    /* */
+}
+
+#back-to-top:hover::after {
+    width: 100%;
+}
 
 /* --- CURSORE NEON PURO --- */
 
 /* 1. Stato Normale (Bianco Puro + Doppio Glow) */
 .trail-dot {
     position: fixed;
-    top: 0; left: 0;
-    width: 6px; height: 6px;
-    
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+
     /* Bianco assoluto */
     background-color: #ffffff;
-    
+
     /* DOPPIO GLOW: Uno stretto e forte, uno largo e diffuso */
-    box-shadow: 
-        0 0 8px rgba(255, 255, 255, 0.9), 
+    box-shadow:
+        0 0 8px rgba(255, 255, 255, 0.9),
         0 0 16px rgba(255, 255, 255, 0.5);
-    
+
     border-radius: 50%;
     pointer-events: none;
     z-index: 9999;
     transform: translate(-50%, -50%);
-    
+
     /* RIMOSSO mix-blend-mode per avere colori puri */
-    mix-blend-mode: normal; 
-    
+    mix-blend-mode: normal;
+
     transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* 2. Stato "Attivo" (Ciano Laser + Doppio Glow) */
 body.cursor-active .trail-dot {
-    background-color: #00f0ff; /* Ciano Elettrico */
-    
+    background-color: #00f0ff;
+    /* Ciano Elettrico */
+
     /* DOPPIO GLOW CIANO: Molto intenso */
-    box-shadow: 
-        0 0 15px #00f0ff, 
-        0 0 30px #00f0ff; 
-        
+    box-shadow:
+        0 0 15px #00f0ff,
+        0 0 30px #00f0ff;
+
     /* Opzionale: Diventa un po' più grande quando attivo */
     transform: translate(-50%, -50%) scale(1.2);
 }
 
 /* LAYOUT UTILS */
 .container {
-    max-width: 1400px; /* Più largo per respiro cinematografico */
+    max-width: 1400px;
+    /* Più largo per respiro cinematografico */
     margin: 0 auto;
     padding: 0 40px;
 }
@@ -135,7 +329,8 @@ body.cursor-active .trail-dot {
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    background: rgba(2, 2, 2, 0.0); /* Trasparente all'inizio */
+    background: rgba(2, 2, 2, 0.0);
+    /* Trasparente all'inizio */
     transition: transform 0.5s var(--ease-smooth), background 0.5s ease, backdrop-filter 0.5s ease;
     border-bottom: 1px solid rgba(255, 255, 255, 0);
 }
@@ -154,7 +349,8 @@ body.cursor-active .trail-dot {
 
 .nav-links {
     display: flex;
-    gap: 70px; /* Molto spazio tra le voci */
+    gap: 70px;
+    /* Molto spazio tra le voci */
 }
 
 .nav-links a {
@@ -187,12 +383,15 @@ body.cursor-active .trail-dot {
 .hero-content {
     text-align: center;
     z-index: 2;
-    mix-blend-mode: screen; /* Fonde il testo con la luce */
+    mix-blend-mode: screen;
+    /* Fonde il testo con la luce */
 }
 
 .hero-name {
-    font-size: 6rem; /* Gigantesco */
-    font-weight: 300; /* Sottile = Eleganza */
+    font-size: 6rem;
+    /* Gigantesco */
+    font-weight: 300;
+    /* Sottile = Eleganza */
     letter-spacing: -2px;
     margin-bottom: 1.5rem;
     color: var(--text-main);
@@ -206,7 +405,8 @@ body.cursor-active .trail-dot {
 .hero-tagline {
     font-size: 0.9rem;
     color: var(--text-muted);
-    letter-spacing: 8px; /* Spaziatura estrema */
+    letter-spacing: 8px;
+    /* Spaziatura estrema */
     text-transform: uppercase;
     font-weight: 400;
     margin-bottom: 3rem;
@@ -217,7 +417,8 @@ body.cursor-active .trail-dot {
     height: 120px;
     margin: 0 auto;
     opacity: 0.8;
-    filter: invert(1); /* Assicura che sia bianca se il json è nero */
+    filter: invert(1);
+    /* Assicura che sia bianca se il json è nero */
 }
 
 /* Scroll Mouse Animation */
@@ -236,21 +437,30 @@ body.cursor-active .trail-dot {
 .scroll-indicator::after {
     content: '';
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: linear-gradient(to bottom, transparent, #fff);
     animation: dropLine 2s infinite cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 @keyframes dropLine {
-    0% { transform: translateY(-100%); }
-    100% { transform: translateY(100%); }
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(100%);
+    }
 }
 
 /* --- AGGIORNAMENTO SERVICES CON EFFETTI GLOW --- */
 .services {
     padding: 160px 0;
     /* Rimuovi background: var(--bg-color); */
-    background: transparent; /* Lo sfondo deve essere trasparente per vedere quello fisso */
+    background: transparent;
+    /* Lo sfondo deve essere trasparente per vedere quello fisso */
     position: relative;
     overflow: hidden;
 }
@@ -270,8 +480,9 @@ body.cursor-active .trail-dot {
 .grid-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1px; /* Linea ancora più sottile per precisione chirurgica */
-    background: rgba(255, 255, 255, 0.05); 
+    gap: 1px;
+    /* Linea ancora più sottile per precisione chirurgica */
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .service-card {
@@ -311,7 +522,8 @@ body.cursor-active .trail-dot {
     font-size: 0.7rem;
     color: var(--text-muted);
     margin-bottom: 30px;
-    font-family: 'JetBrains Mono', monospace; /* Font tecnico per eccellenza */
+    font-family: 'JetBrains Mono', monospace;
+    /* Font tecnico per eccellenza */
     letter-spacing: 2px;
     transition: color 0.4s ease;
 }
@@ -345,7 +557,8 @@ body.cursor-active .trail-dot {
 }
 
 .service-card:hover p {
-    color: rgba(242, 242, 242, 0.7); /* Il testo diventa leggermente più leggibile */
+    color: rgba(242, 242, 242, 0.7);
+    /* Il testo diventa leggermente più leggibile */
 }
 
 /* Raffinatezza extra: un piccolo punto "pixel" nell'angolo */
@@ -372,7 +585,8 @@ body.cursor-active .trail-dot {
 
 .works-teaser {
     padding: 0 0 160px 0;
-    background: transparent !important; /* Fix per sfondo unico */
+    background: transparent !important;
+    /* Fix per sfondo unico */
 }
 
 .section-header {
@@ -381,7 +595,7 @@ body.cursor-active .trail-dot {
     justify-content: space-between;
     align-items: flex-end;
     padding: 0 20px;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     padding-bottom: 30px;
 }
 
@@ -401,43 +615,54 @@ body.cursor-active .trail-dot {
 .works-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 60px; /* Spazio tra le card */
-    
+    gap: 60px;
+    /* Spazio tra le card */
+
     /* ECCO IL FIX CHE MANCAVA: */
-    margin-bottom: 100px; /* Spazio sotto i lavori (stacca il bottone) */
-    
+    margin-bottom: 100px;
+    /* Spazio sotto i lavori (stacca il bottone) */
+
     /* Abilita il 3D */
-    perspective: 1000px; 
+    perspective: 1000px;
 }
 
 .work-item {
     height: 500px;
     position: relative;
-    cursor: none; /* Per il tuo custom cursor */
-    
+    cursor: none;
+    /* Per il tuo custom cursor */
+
     /* Configurazione 3D */
     transform-style: preserve-3d;
-    transition: transform 0.1s ease-out; /* Movimento fluido tilt */
-    
+    transition: transform 0.1s ease-out;
+    /* Movimento fluido tilt */
+
     /* Sfondo trasparente (l'immagine è nel div figlio .work-image) */
-    background: transparent; 
-    
+    background: transparent;
+
     /* Importante: nasconde bordi immagine se esce durante il tilt */
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 /* L'immagine deve essere un div separato (come nel nuovo HTML) */
 .work-image {
-    width: 100%; height: 100%;
-    background-size: cover; background-position: center;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
     transition: transform 0.5s ease;
-    
+
     /* La spingiamo indietro per effetto profondità */
-    transform: scale(1.05); /* Zoom leggero per evitare bordi bianchi in tilt */
+    transform: scale(1.05);
+    /* Zoom leggero per evitare bordi bianchi in tilt */
 }
 
 .work-overlay {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: #000;
     opacity: 0.2;
     transition: opacity 0.6s var(--ease-smooth);
@@ -445,7 +670,8 @@ body.cursor-active .trail-dot {
 }
 
 .work-item:hover .work-overlay {
-    opacity: 0; /* Rimuovi overlay in hover */
+    opacity: 0;
+    /* Rimuovi overlay in hover */
 }
 
 /* --- INFO TESTO (TUE ANIMAZIONI ORIGINALI MANTENUTE) --- */
@@ -456,7 +682,7 @@ body.cursor-active .trail-dot {
     z-index: 2;
     mix-blend-mode: difference;
     pointer-events: none;
-    
+
     /* MAGIC TRICK: Questo fa "galleggiare" il testo */
     transform: translateZ(50px);
     pointer-events: none;
@@ -467,8 +693,8 @@ body.cursor-active .trail-dot {
     font-weight: 300;
     margin-bottom: 10px;
     mix-blend-mode: difference;
-    text-shadow: 0 10px 30px rgba(0,0,0,0.8);
-    
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+
     /* Tua animazione originale */
     transform: translateY(20px);
     opacity: 0;
@@ -480,7 +706,7 @@ body.cursor-active .trail-dot {
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 2px;
-    
+
     /* Tua animazione originale */
     transform: translateY(20px);
     opacity: 0;
@@ -498,7 +724,8 @@ body.cursor-active .trail-dot {
 /* TRIGGER ANIMAZIONI HOVER */
 .work-item:hover .work-info h4,
 .work-item:hover .view-case {
-    transform: translateY(0); /* Il testo sale */
+    transform: translateY(0);
+    /* Il testo sale */
     opacity: 1;
 }
 
@@ -514,7 +741,7 @@ body.cursor-active .trail-dot {
     letter-spacing: 4px;
     text-transform: uppercase;
     color: var(--text-main);
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     background: transparent;
     transition: all 0.4s ease;
     position: relative;
@@ -524,16 +751,18 @@ body.cursor-active .trail-dot {
 .btn-primary::before {
     content: '';
     position: absolute;
-    top: 0; left: -100%;
-    width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
     transition: 0.5s;
 }
 
 .btn-primary:hover {
     border-color: var(--text-main);
-    background: rgba(255,255,255,0.02);
-    box-shadow: 0 0 30px rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.02);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
 }
 
 .btn-primary:hover::before {
@@ -550,32 +779,144 @@ body.cursor-active .trail-dot {
     align-items: center;
     gap: 15px;
     cursor: pointer;
-    mix-blend-mode: exclusion; /* Si vede sempre */
+    mix-blend-mode: exclusion;
+    /* Si vede sempre */
 }
 
-.lang-icon { width: 16px; height: 16px; opacity: 0.5; transition: 0.3s; }
-.lang-switcher:hover .lang-icon { opacity: 1; }
-#currentLang { font-size: 0.75rem; letter-spacing: 2px; color: #fff; font-weight: 600; }
+.lang-icon {
+    width: 16px;
+    height: 16px;
+    opacity: 0.5;
+    transition: 0.3s;
+}
+
+.lang-switcher:hover .lang-icon {
+    opacity: 1;
+}
+
+#currentLang {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: #fff;
+    font-weight: 600;
+}
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-    .container { padding: 0 20px; }
-    .nav-links { gap: 20px; display: none; /* In realtà qui servirebbe un hamburger per mobile */ }
-    
-    .hero-name { font-size: 3.5rem; letter-spacing: -1px; }
-    .hero-tagline { font-size: 0.75rem; letter-spacing: 4px; max-width: 80%; margin: 0 auto 3rem auto; }
-    
-    .grid-3, .works-grid { grid-template-columns: 1fr; gap: 40px; }
-    .work-item { height: 350px; }
-    .section-header { flex-direction: column; align-items: flex-start; gap: 10px; }
 
-    /* Ripristina il comportamento touch su mobile */
-    * { 
-        cursor: auto !important; 
+    /* --- RESET & CURSORE --- */
+    * {
+        cursor: auto !important;
     }
-    
-    /* Nascondi il tuo cursore personalizzato su mobile */
-    .trail-dot { 
-        display: none !important; 
+
+    .trail-dot {
+        display: none !important;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        /* Per fluidità su iOS */
+    }
+
+    /* --- LAYOUT GENERALE --- */
+    .container {
+        padding: 0 25px;
+    }
+
+    section {
+        padding: 80px 0;
+    }
+
+    /* Riduciamo i padding verticali eccessivi */
+
+    /* --- NAVBAR --- */
+    .nav-links {
+        display: none;
+        /* Per ora resta nascosto, valuta un menu hamburger se hai molte pagine */
+    }
+
+    .navbar {
+        height: 70px;
+    }
+
+    /* --- HERO --- */
+    .hero {
+        height: auto;
+        min-height: 100vh;
+        padding-top: 120px;
+    }
+
+    .hero-name {
+        font-size: 3rem;
+        /* Leggermente più piccolo per evitare che vada a capo male */
+        line-height: 1.1;
+    }
+
+    .hero-tagline {
+        font-size: 0.7rem;
+        letter-spacing: 3px;
+        max-width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    /* --- GRIGLIE (Servizi e Lavori) --- */
+    .grid-3,
+    .works-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .service-card {
+        padding: 40px 30px;
+    }
+
+    /* Più compatto */
+    .work-item {
+        height: 300px;
+    }
+
+    .work-item img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* --- FOOTER (Risolviamo la centratura mobile) --- */
+    .footer-content {
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .footer-links {
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+
+    .footer-bottom {
+        grid-template-columns: 1fr;
+        /* Incolonniamo i 3 elementi */
+        gap: 20px;
+        text-align: center;
+        padding-bottom: 120px;
+        /* Spazio per lo switcher lingue */
+    }
+
+    .footer-bottom p:first-child,
+    .footer-bottom #back-to-top {
+        text-align: center;
+        justify-self: center;
+    }
+
+    /* --- LANG SWITCHER MOBILE --- */
+    .lang-switcher {
+        bottom: 20px;
+        left: 20px;
+        padding: 10px 15px;
+        background: rgba(0, 0, 0, 0.5);
+        /* Più visibile su mobile */
+        backdrop-filter: blur(10px);
+        border-radius: 50px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
     }
 }

@@ -94,15 +94,15 @@ document.addEventListener('DOMContentLoaded', () => {
         // Quando il mouse si muove sopra la card
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
-            
+
             // Calcola coordinate mouse relative alla card
-            const x = e.clientX - rect.left; 
+            const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            
+
             // Trova il centro
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            
+
             // Calcola rotazione (moltiplica per 7 o 10 per aumentare l'effetto)
             const rotateX = ((y - centerY) / centerY) * -7; // Asse X
             const rotateY = ((x - centerX) / centerX) * 7;  // Asse Y
@@ -139,4 +139,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Avvia l'animazione del cursore
     animateTrail();
+
+    // =================================================================
+    // Footer
+    // =================================================================
+    // Logica per il pulsante "Back to Top"
+    const backToTop = document.getElementById('back-to-top');
+    if (backToTop) {
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // Aggiorna la lista degli elementi interattivi per il cursore ciano
+    const footerLinks = document.querySelectorAll('.main-footer a, #back-to-top');
+    footerLinks.forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-active'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-active'));
+    });
 });
