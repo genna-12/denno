@@ -167,6 +167,9 @@ ul {
 }
 
 .footer-bottom {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: all 0.6s var(--ease-smooth);
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     /* Tre colonne: la centrale prende solo lo spazio necessario */
@@ -176,6 +179,12 @@ ul {
     font-size: 0.7rem;
     letter-spacing: 2px;
     color: var(--text-muted);
+}
+
+/* Questa classe verrà aggiunta dal JS */
+.footer-bottom.reveal-now {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
 }
 
 /* Allineamenti specifici per le tre parti */
@@ -799,6 +808,20 @@ body.cursor-active .trail-dot {
     letter-spacing: 2px;
     color: #fff;
     font-weight: 600;
+}
+
+/* Stato di partenza: l'elemento è invisibile e spostato in basso */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); /* Curva fluida premium */
+    will-change: transform, opacity;
+}
+
+/* Stato finale: attivato dal JavaScript */
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* RESPONSIVE */

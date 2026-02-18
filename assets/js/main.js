@@ -18,22 +18,35 @@ document.addEventListener('DOMContentLoaded', () => {
     /* 2. SCROLL REVEAL ANIMATIONS */
     const observerOptions = {
         root: null,
-        rootMargin: '0px',
-        threshold: 0.15 // Attiva quando il 15% dell'elemento è visibile
+        rootMargin: '0px 0px -50px 0px',
+        threshold: 0.1
     };
 
-    const observer = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target); // Animazione one-shot
+
+                // LOGICA SPECIALE PER IL FOOTER
+                if (entry.target.classList.contains('main-footer')) {
+                    console.log("Footer intercettato!"); // Controlla in console (F12)
+                    const footerBottom = document.querySelector('.footer-bottom');
+                    if (footerBottom) {
+                        setTimeout(() => {
+                            footerBottom.classList.add('visible');
+                            console.log("Footer Bottom attivato!");
+                        }, 150); // Il tuo delay di 0.15s
+                    }
+                }
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    const elementsToReveal = document.querySelectorAll('.scroll-reveal');
-    elementsToReveal.forEach(el => observer.observe(el));
+    // Applichiamo l'osservatore a tutti gli elementi .scroll-reveal
+    document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
 
+    /* 3. CUSTOM CURSOR TRAIL */
     const trailLength = 12; // Numero di "pallini" nella scia
     const trailElements = [];
     let mouseX = 0;
@@ -55,8 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
-    // Customize cursor
     // Aggiorna costantemente la posizione del mouse
     window.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
@@ -157,4 +168,24 @@ document.addEventListener('DOMContentLoaded', () => {
         el.addEventListener('mouseenter', () => document.body.classList.add('cursor-active'));
         el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-active'));
     });
+});
+
+window.addEventListener('scroll', () => {
+    const footer = document.getElementById('final-footer');
+    const footerBottom = document.querySelector('.footer-bottom');
+    
+    if (footer && footerBottom) {
+        // Calcola quanto manca alla fine della pagina
+        const scrollPosition = window.innerHeight + window.scrollY;
+        const threshold = document.documentElement.scrollHeight - 100;
+
+        // Se l'utente è quasi in fondo alla pagina
+        if (scrollPosition >= threshold) {
+            if (!footerBottom.classList.contains('reveal-now')) {
+                setTimeout(() => {
+                    footerBottom.classList.add('reveal-now');
+                }, 150); // Il tuo delay di 0.15s
+            }
+        }
+    }
 });
