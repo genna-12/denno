@@ -13,7 +13,15 @@ const translations = {
         works_title: "Lavori Selezionati",
         work_1: "Progetto Alpha",
         work_2: "Nebula Core",
-        btn_full_portfolio: "Vedi Portfolio Completo"
+        btn_full_portfolio: "Vedi Portfolio Completo",
+        contact_title: "READY TO",
+        contact_title_glow: "RENDER?",
+        contact_subtitle: "Disponibile per collaborazioni freelance e progetti high-end. Analizzo ogni brief entro 24 ore.",
+        contact_label_name: "NOME / STUDIO",
+        contact_label_email: "EMAIL",
+        contact_label_message: "IL TUO BRIEF",
+        contact_btn: "PUSH TO START",
+        contact_location: "POSIZIONE"
     },
     en: {
         nav_portfolio: "Portfolio",
@@ -29,7 +37,15 @@ const translations = {
         works_title: "Selected Works",
         work_1: "Project Alpha",
         work_2: "Nebula Core",
-        btn_full_portfolio: "View Full Portfolio"
+        btn_full_portfolio: "View Full Portfolio",
+        contact_title: "READY TO",
+        contact_title_glow: "RENDER?",
+        contact_subtitle: "Available for freelance collaborations and high-end projects. I analyze every brief within 24 hours.",
+        contact_label_name: "NAME / STUDIO",
+        contact_label_email: "EMAIL",
+        contact_label_message: "YOUR BRIEF",
+        contact_btn: "PUSH TO START",
+        contact_location: "LOCATION"
     }
 };
 

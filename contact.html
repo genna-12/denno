@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatti | Denis Ruscitti</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+
+<body>
+    <div class="depth-background"></div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="./index.html" data-i18n="nav_index" class="interactive">Home</a></li>
+                <li><a href="#portfolio" data-i18n="nav_portfolio" class="interactive">Portfolio</a></li>
+                <li><a href="#about" class="active interactive" data-i18n="nav_about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="contact-hero">
+            <div class="contact-wrapper scroll-reveal">
+                <div class="contact-info">
+                    <h2 class="hero-name contact-title" data-i18n="contact_title">
+                        READY TO <br><span class="glow-text" data-i18n="contact_title_glow">RENDER?</span>
+                    </h2>
+                    <p class="hero-tagline" data-i18n="contact_subtitle">
+                        Disponibile per collaborazioni freelance e progetti high-end. <br>
+                        Analizzo ogni brief entro 24 ore.
+                    </p>
+                    
+                    <div class="contact-methods">
+                        <div class="method-item">
+                            <small>DIRECT LINE</small><br>
+                            <a href="mailto:denis@example.com" class="interactive">denis@example.com</a>
+                        </div>
+                        <div class="method-item" style="margin-top: 30px;">
+                            <small data-i18n="contact_location">LOCATION</small><br>
+                            <span style="color: var(--text-main);">Remote / Italy / Global</span>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="vfx-form">
+                    <div class="input-group">
+                        <input type="text" id="name" required placeholder=" ">
+                        <label for="name" data-i18n="contact_label_name">NOME / STUDIO</label>
+                        <div class="input-glow"></div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <input type="email" id="email" required placeholder=" ">
+                        <label for="email">EMAIL</label>
+                        <div class="input-glow"></div>
+                    </div>
+
+                    <div class="input-group">
+                        <textarea id="message" rows="4" required placeholder=" "></textarea>
+                        <label for="message">IL TUO BRIEF</label>
+                        <div class="input-glow"></div>
+                    </div>
+
+                    <button type="submit" class="btn-primary interactive">
+                        <span class="btn-text" data-i18n="contact_btn">PUSH TO START</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer" id="final-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h2 class="footer-logo">DR</h2>
+                    <p data-i18n="footer_tagline">Digital Reality Architect</p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-group">
+                        <h4>Social</h4>
+                        <ul>
+                            <li><a href="https://www.instagram.com/drealm.mov" class="hover-link">Instagram</a></li>
+                            <li><a href="#" class="hover-link">ArtStation</a></li>
+                            <li><a href="#" class="hover-link">LinkedIn</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-group">
+                        <h4>Contatti</h4>
+                        <ul>
+                            <li><a href="mailto:mail" class="hover-link">Email</a></li>
+                            <li><a href="#" class="hover-link">Telegram</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Designed by Genna</p>
+                <p>&copy; 2026 DENIS RUSCITTI — ALL RIGHTS RESERVED</p>
+                <button id="back-to-top" class="hover-link">TOP ↑</button>
+            </div>
+        </div>
+    </footer>
+
+    <div class="lang-switcher" id="langToggle">
+        <img src="assets/images/lingue.png" alt="Language" class="lang-icon">
+        <span id="currentLang">ITA</span>
+    </div>
+
+    <script src="assets/js/language.js"></script>
+    <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/contact.js"></script>
+</body>
+
+
+</html>

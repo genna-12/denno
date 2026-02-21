@@ -943,3 +943,113 @@ body.cursor-active .trail-dot {
         border: 1px solid rgba(255, 255, 255, 0.1);
     }
 }
+
+
+/* --- STYLE CONTACT SECTION --- */
+/* Fix distanziamento dalla navbar */
+.contact-hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 140px; /* Più spazio dalla nav */
+    padding-bottom: 100px; /* Spazio per non toccare il footer */
+}
+
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr; /* Colonna sinistra leggermente più larga */
+    gap: 80px;
+    width: 100%;
+}
+
+.contact-title {
+    font-size: clamp(2.5rem, 10vw, 5rem) !important;
+    line-height: 0.9 !important;
+    margin-bottom: 30px;
+}
+
+.contact-form {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 60px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    backdrop-filter: blur(10px);
+}
+
+.main-footer {
+    padding-top: 100px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glow-text {
+    color: var(--glow);
+    text-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+}
+
+/* Bottone più sottile e moderno */
+.btn-primary {
+    background: transparent;
+    border: 1px solid var(--text-main);
+    padding: 18px 30px;
+    letter-spacing: 4px;
+    font-size: 0.8rem;
+    transition: all 0.5s var(--ease-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary:hover {
+    border-color: var(--glow);
+    color: var(--glow);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.input-group input, .input-group textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 10px 0;
+    color: white;
+    outline: none;
+}
+
+.input-group label {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    color: var(--text-muted);
+    transition: 0.4s var(--ease-smooth);
+    pointer-events: none;
+    font-size: 0.8rem;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label,
+.input-group textarea:focus + label,
+.input-group textarea:not(:placeholder-shown) + label {
+    transform: translateY(-25px);
+    color: var(--glow);
+    font-size: 0.7rem;
+}
+
+.input-glow {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background: var(--glow);
+    box-shadow: 0 0 10px var(--glow);
+    transition: 0.6s var(--ease-smooth);
+}
+
+.input-group input:focus ~ .input-glow,
+.input-group textarea:focus ~ .input-glow {
+    width: 100%;
+}
