@@ -5,7 +5,7 @@
 
 (function() {
     // 1. INIZIALIZZAZIONE (Sostituisci con la tua chiave pubblica)
-    emailjs.init("YOUR_PUBLIC_KEY");
+    emailjs.init("xG9iQ6cAplyoHU1-o");
 
     document.addEventListener('DOMContentLoaded', () => {
         const contactForm = document.getElementById('vfx-form');
@@ -39,7 +39,7 @@
             btn.style.borderColor = "var(--glow)";
 
             // Invio reale
-            emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', '#vfx-form')
+            emailjs.sendForm('service_j6gl1hm', 'template_5u7cpxm', '#vfx-form')
                 .then(() => {
                     showStatus(btn, btnText, "RENDER COMPLETE", "var(--glow)");
                     contactForm.reset();
