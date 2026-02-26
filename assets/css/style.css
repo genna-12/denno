@@ -397,10 +397,10 @@ body.cursor-active .trail-dot {
 }
 
 .hero-name {
-    font-size: 6rem;
+    font-size: 7rem;
     /* Gigantesco */
-    font-weight: 300;
-    /* Sottile = Eleganza */
+    font-weight: 350;
+    /* Più cicciotto */
     letter-spacing: -2px;
     margin-bottom: 1.5rem;
     color: var(--text-main);
@@ -793,8 +793,8 @@ body.cursor-active .trail-dot {
 }
 
 .lang-icon {
-    width: 16px;
-    height: 16px;
+    width: 58px;
+    height: 58px;
     opacity: 0.5;
     transition: 0.3s;
 }
@@ -804,7 +804,7 @@ body.cursor-active .trail-dot {
 }
 
 #currentLang {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     letter-spacing: 2px;
     color: #fff;
     font-weight: 600;

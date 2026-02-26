@@ -61,6 +61,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     langToggle.addEventListener('click', () => {
         currentLang = currentLang === 'it' ? 'en' : 'it';
+        
+        // Apply flip animation to the language icon
+        const langIcon = document.querySelector('.lang-icon');
+        if (langIcon) {
+            langIcon.classList.remove('lang-flip');
+            // Force reflow to restart animation
+            void langIcon.offsetWidth;
+            langIcon.classList.add('lang-flip');
+        }
+        
         updateLanguage(currentLang);
         localStorage.setItem('siteLang', currentLang);
     });
