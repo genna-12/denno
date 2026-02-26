@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Denis Ruscitti</title>
+    <meta name="description" content="VFX Artist Portfolio - Video, 3D, Motion Graphics">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/portfolio.css">
+
+    <!-- Lottie -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+</head>
+
+<body>
+    <div class="depth-background"></div>
+    
+    <!-- Particle Canvas Background -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- 1. NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="./index.html" data-i18n="nav_home">Home</a></li>
+                <li><a href="#works" class="active" data-i18n="nav_portfolio">About</a></li>
+                <li><a href="./contact.html" data-i18n="nav_contact">Contatti</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 2. HERO SECTION -->
+    <header class="portfolio-hero">
+        <div class="hero-content">
+            <p class="hero-label fade-in-up" data-i18n="portfolio_label">CREATIVE WORKS</p>
+            <h1 class="hero-title fade-in-up delay-1">
+                <span class="title-line" data-i18n="portfolio_title">PORTFOLIO</span>
+            </h1>
+            <p class="hero-subtitle fade-in-up delay-2" data-i18n="portfolio_subtitle">
+                Visual Effects • 3D • Motion Design
+            </p>
+        </div>
+        
+        <!-- Animated scroll indicator -->
+        <div class="scroll-indicator fade-in delay-3">
+            <span></span>
+        </div>
+    </header>
+
+    <main>
+        <!-- 3. FILTER SECTION -->
+        <section class="filter-section scroll-reveal" id="works">
+            <div class="container">
+                <div class="filter-container">
+                    <button class="filter-btn active" data-filter="all" data-i18n="filter_all">All</button>
+                    <button class="filter-btn" data-filter="video" data-i18n="filter_video">Video</button>
+                    <button class="filter-btn" data-filter="3d" data-i18n="filter_3d">3D</button>
+                    <button class="filter-btn" data-filter="vfx" data-i18n="filter_vfx">VFX</button>
+                    <button class="filter-btn" data-filter="motion" data-i18n="filter_motion">Motion Graphics</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. PORTFOLIO GRID -->
+        <section class="portfolio-section">
+            <div class="container">
+                <div class="portfolio-grid" id="portfolio-grid">
+                    <!-- Project 1 - Video -->
+                    <div class="portfolio-item tilt-card" data-category="video">
+                        <div class="item-image">
+                            <div class="image-placeholder" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);">
+                                <span class="placeholder-icon">▶</span>
+                            </div>
+                            <div class="item-overlay">
+                                <div class="overlay-content">
+                                    <span class="project-category">VIDEO</span>
+                                    <h3 class="project-title" data-i18n="project_1_title">Cinematic Reel</h3>
+                                    <p class="project-desc" data-i18n="project_1_desc">Showreel 2024</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-glow"></div>
+                    </div>
+
+                    <!-- Project 2 - 3D -->
+                    <div class="portfolio-item tilt-card" data-category="3d">
+                        <div class="item-image">
+                            <div class="image-placeholder" style="background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);">
+                                <span class="placeholder-icon">◈</span>
+                            </div>
+                            <div class="item-overlay">
+                                <div class="overlay-content">
+                                    <span class="project-category">3D</span>
+                                    <h3 class="project-title" data-i18n="project_2_title">Nebula Core</h3>
+                                    <p class="project-desc" data-i18n="project_2_desc">Environment Design</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-glow"></div>
+                    </div>
+
+                    <!-- Project 3 - VFX -->
+                    <div class="portfolio-item tilt-card" data-category="vfx">
+                        <div class="item-image">
+                            <div class="image-placeholder" style="background: linear-gradient(135deg, #0a0a0f 0%, #1a0a1a 100%);">
+                                <span class="placeholder-icon">✦</span>
+                            </div>
+                            <div class="item-overlay">
+                                <div class="overlay-content">
+                                    <span class="project-category">VFX</span>
+                                    <h3 class="project-title" data-i18n="project_3_title">Particle Storm</h3>
+                                    <p class="project-desc" data-i18n="project_3_desc">Compositing & Simulation</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-glow"></div>
+                    </div>
+
+                    <!-- Project 4 - Motion -->
+                    <div class="portfolio-item tilt-card" data-category="motion">
+                        <div class="item-image">
+                            <div class="image-placeholder" style="background: linear-gradient(135deg, #0a0f0f 0%, #0a1a1a 100%);">
+                                <span class="placeholder-icon">⟳</span>
+                            </div>
+                            <div class="item-overlay">
+                                <div class="overlay-content">
+                                    <span class="project-category">MOTION GRAPHICS</span>
+                                    <h3 class="project-title" data-i18n="project_4_title">Kinetic Type</h3>
+                                    <p class="project-desc" data-i18n="project_4_desc">Typography Animation</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-glow"></div>
+                    </div>
+
+                    <!-- Project 5 - Video -->
+                    <div class="portfolio-item tilt-card" data-category="video">
+                        <div class="item-image">
+                            <div class="image-placeholder" style="background: linear-gradient(135deg, #1a0a0a 0%, #2e0a0a 100%);">
+                                <span class="placeholder-icon">▶</span>
+                            </div>
+                            <div class="item-overlay">
+                                <div class="overlay-content">
+                                    <span class="project-category">VIDEO</span>
+                                    <h3 class="project-title" data-i18n="project_5_title">Brand Story</h3>
+                                    <p class="project-desc" data-i18n="project_5_desc">Commercial Production</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-glow"></div>
+                    </div>
+
+                    <!-- Project 6 - 3D -->
+                    <div class="portfolio-item tilt-card" data-category="3d">
+                        <div class="item-image">
+                            <div class="image-placeholder" style="background: linear-gradient(135deg, #0a0a1a 0%, #0a0a2e 100%);">
+                                <span class="placeholder-icon">◈</span>
+                            </div>
+                            <div class="item-overlay">
+                                <div class="overlay-content">
+                                    <span class="project-category">3D</span>
+                                    <h3 class="project-title" data-i18n="project_6_title">Character Study</h3>
+                                    <p class="project-desc" data-i18n="project_6_desc">Digital Sculpture</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-glow"></div>
+                    </div>
+
+                    <!-- Project 7 - VFX -->
+                    <div class="portfolio-item tilt-card" data-category="vfx">
+                        <div class="item-image">
+                            <div class="image-placeholder" style="background: linear-gradient(135deg, #1a1a0a 0%, #2e2e0a 100%);">
+                                <span class="placeholder-icon">✦</span>
+                            </div>
+                            <div class="item-overlay">
+                                <div class="overlay-content">
+                                    <span class="project-category">VFX</span>
+                                    <h3 class="project-title" data-i18n="project_7_title">Match Move</h3>
+                                    <p class="project-desc" data-i18n="project_7_desc">Tracking & Integration</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-glow"></div>
+                    </div>
+
+                    <!-- Project 8 - Motion -->
+                    <div class="portfolio-item tilt-card" data-category="motion">
+                        <div class="item-image">
+                            <div class="image-placeholder" style="background: linear-gradient(135deg, #0a1a0a 0%, #0a2e0a 100%);">
+                                <span class="placeholder-icon">⟳</span>
+                            </div>
+                            <div class="item-overlay">
+                                <div class="overlay-content">
+                                    <span class="project-category">MOTION GRAPHICS</span>
+                                    <h3 class="project-title" data-i18n="project_8_title">Logo Animation</h3>
+                                    <p class="project-desc" data-i18n="project_8_desc">Brand Identity</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-glow"></div>
+                    </div>
+                </div>
+
+                <!-- Empty State (shown when no items match filter) -->
+                <div class="empty-state" id="empty-state">
+                    <div class="empty-icon">∅</div>
+                    <p data-i18n="empty_state">Nessun progetto in questa categoria</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. CTA SECTION -->
+        <section class="cta-section scroll-reveal">
+            <div class="container">
+                <div class="cta-content">
+                    <p class="cta-label" data-i18n="cta_label">COLLABORATION</p>
+                    <h2 class="cta-title" data-i18n="cta_title">HAI UN PROGETTO IN MENTE?</h2>
+                    <p class="cta-desc" data-i18n="cta_desc">Disponibile per freelance e collaborazioni creative.</p>
+                    <a href="./contact.html" class="btn-primary" data-i18n="cta_btn">CONTATTAMI</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 6. PROJECT MODAL -->
+    <div class="project-modal" id="project-modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">×</button>
+            <div class="modal-body">
+                <span class="modal-category" id="modal-category"></span>
+                <h2 class="modal-title" id="modal-title"></h2>
+                <p class="modal-desc" id="modal-desc"></p>
+                <div class="modal-media" id="modal-media">
+                    <!-- Dynamic content -->
+                </div>
+                <div class="modal-details">
+                    <div class="detail-item">
+                        <span class="detail-label">CLIENT</span>
+                        <span class="detail-value" id="modal-client">—</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">YEAR</span>
+                        <span class="detail-value" id="modal-year">2024</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">ROLE</span>
+                        <span class="detail-value" id="modal-role">—</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer" id="final-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h2 class="footer-logo">DR</h2>
+                    <p data-i18n="footer_tagline">Digital Reality Architect</p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-group">
+                        <h4>Social</h4>
+                        <ul>
+                            <li><a href="https://www.instagram.com/drealm.mov" class="hover-link">Instagram</a></li>
+                            <li><a href="#" class="hover-link">ArtStation</a></li>
+                            <li><a href="#" class="hover-link">LinkedIn</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-group">
+                        <h4>Contatti</h4>
+                        <ul>
+                            <li><a href="mailto:mail" class="hover-link">Email</a></li>
+                            <li><a href="#" class="hover-link">Telegram</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Designed by Genna</p>
+                <p>&copy; 2026 DENIS RUSCITTI — ALL RIGHTS RESERVED</p>
+                <button id="back-to-top" class="hover-link">TOP ↑</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LANGUAGE SWITCHER -->
+    <div class="lang-switcher" id="langToggle">
+        <img src="assets/images/lingue.png" alt="Language" class="lang-icon">
+        <span id="currentLang">ITA</span>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="assets/js/language.js"></script>
+    <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/portfolio.js"></script>
+</body>
+
+</html>
