@@ -1,4 +1,18 @@
 /* KEYFRAMES */
+/* NUOVA ANIMAZIONE: Effetto Glass Reveal per l'immagine Hero */
+@keyframes glassReveal {
+    0% {
+        transform: scale(1.15);
+        filter: blur(30px); /* Solo sfocatura, nessuna oscurità */
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        filter: blur(0px); /* La foto torna ai suoi colori originali brillanti */
+        opacity: 1;
+    }
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;

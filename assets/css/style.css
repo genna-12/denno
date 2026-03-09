@@ -389,36 +389,80 @@ body.cursor-active .trail-dot {
     overflow: hidden;
 }
 
+/* L'immagine animata di sfondo */
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/prova.jpeg');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    animation: glassReveal 2.5s var(--ease-smooth) forwards;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 150px rgba(0,0,0, 0.9);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Vignetta agli angoli */
+.hero-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent 20%, rgba(2, 2, 2, 0.95) 100%);
+    z-index: 1;
+}
+
 .hero-content {
     text-align: center;
     z-index: 2;
-    mix-blend-mode: screen;
-    /* Fonde il testo con la luce */
+    position: relative;
+}
+
+/* L'ombra cinematografica che sfuma nella foto */
+.hero-content::before {
+    display: none !important;
 }
 
 .hero-name {
     font-size: 7rem;
-    /* Gigantesco */
     font-weight: 350;
-    /* Più cicciotto */
     letter-spacing: -2px;
     margin-bottom: 1.5rem;
-    color: var(--text-main);
-    /* Gradiente metallico sottile */
+    
     background: linear-gradient(180deg, #ffffff 0%, #888888 100%);
-    background-clip: text;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent; 
+    
+    /* Ombra compatta per staccare il testo dallo sfondo senza sporcare la foto */
+    filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.7));
 }
 
 .hero-tagline {
     font-size: 0.9rem;
     color: var(--text-muted);
     letter-spacing: 8px;
-    /* Spaziatura estrema */
     text-transform: uppercase;
     font-weight: 400;
     margin-bottom: 3rem;
+    
+    filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.9));
 }
 
 #lottie-signature {
@@ -427,7 +471,6 @@ body.cursor-active .trail-dot {
     margin: 0 auto;
     opacity: 0.8;
     filter: invert(1);
-    /* Assicura che sia bianca se il json è nero */
 }
 
 /* Scroll Mouse Animation */
@@ -467,14 +510,11 @@ body.cursor-active .trail-dot {
 /* --- AGGIORNAMENTO SERVICES CON EFFETTI GLOW --- */
 .services {
     padding: 160px 0;
-    /* Rimuovi background: var(--bg-color); */
     background: transparent;
-    /* Lo sfondo deve essere trasparente per vedere quello fisso */
     position: relative;
     overflow: hidden;
 }
 
-/* Effetto luce ambientale soffusa sullo sfondo della sezione */
 .services::before {
     content: '';
     position: absolute;
@@ -482,23 +522,22 @@ body.cursor-active .trail-dot {
     left: -10%;
     width: 40%;
     height: 40%;
-    /*background: radial-gradient(circle, rgba(0, 240, 255, 0.03) 0%, transparent 70%);*/
     pointer-events: none;
 }
 
 .grid-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    /* Linea ancora più sottile per precisione chirurgica */
-    background: rgba(255, 255, 255, 0.05);
+    gap: 30px; /* Spazio tra le cards */
+    background: transparent; /* Rimosso lo sfondo che le univa */
 }
 
 .service-card {
-    background: var(--bg-color);
+    background: var(--bg-card); /* Colore solido scuro */
+    border: 1px solid rgba(255, 255, 255, 0.04); /* Bordo leggerissimo */
+    border-radius: 12px; /* Angoli elegantemente smussati */
     padding: 80px 50px;
     transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-    border: none;
     position: relative;
     overflow: hidden;
 }
