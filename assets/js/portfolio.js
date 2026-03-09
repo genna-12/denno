@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
     /* =========================================
        3. CUSTOM CURSOR TRAIL (from main.js)
        ========================================= */
-    const trailLength = 12;
+    const trailLength = 1;
     const trailElements = [];
     let mouseX = 0;
     let mouseY = 0;
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function animateTrail() {
         trailElements.forEach((dot, index) => {
-            const speed = index === 0 ? 1 : 0.45;
+            const speed = index === 0 ? 0.15 : 0.45;
             const targetX = index === 0 ? mouseX : trailElements[index - 1].x;
             const targetY = index === 0 ? mouseY : trailElements[index - 1].y;
             

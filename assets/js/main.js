@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
 
     /* 3. CUSTOM CURSOR TRAIL */
-    const trailLength = 12; // Numero di "pallini" nella scia
+    const trailLength = 1; // Numero di "pallini" nella scia
     const trailElements = [];
     let mouseX = 0;
     let mouseY = 0;
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Il primo punto segue il mouse, gli altri seguono il punto precedente.
 
             // Speed: il primo è veloce (1), gli altri hanno un leggero ritardo (0.4)
-            const speed = index === 0 ? 1 : 0.45;
+            const speed = index === 0 ? 0.15 : 0.45;
 
             const targetX = index === 0 ? mouseX : trailElements[index - 1].x;
             const targetY = index === 0 ? mouseY : trailElements[index - 1].y;
@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Selezioniamo tutti gli elementi che devono far cambiare colore al cursore
     // a = link, button = bottoni, .service-card = card servizi, .work-item = lavori
-    const interactiveElements = document.querySelectorAll('a, button, .service-card, .work-item, .lang-switcher');
+    const interactiveElements = document.querySelectorAll('a, button, .service-card, .work-item, .lang-switcher, .skill-tag, .philosophy-card, .timeline-item, .about-cta');
 
     interactiveElements.forEach(el => {
         // Quando entri nell'elemento -> Aggiungi classe al body

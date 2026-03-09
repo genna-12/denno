@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Denis Ruscitti</title>
+    <meta name="description" content="About Denis Ruscitti - VFX Artist & Digital Creator">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&family=Space+Mono&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/about.css">
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Lottie -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+</head>
+
+<body>
+    <div class="depth-background"></div>
+    
+    <!-- Three.js Canvas -->
+    <canvas id="about-canvas"></canvas>
+
+    <!-- 1. NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="./index.html" data-i18n="nav_home">Home</a></li>
+                <li><a href="./portfolio.html" data-i18n="nav_portfolio">Portfolio</a></li>
+                <li><a href="#" class="active" data-i18n="nav_about">About</a></li>
+                <li><a href="./contact.html" data-i18n="nav_contact">Contatti</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 2. HERO SECTION - SPLIT LAYOUT -->
+    <main>
+        <section class="about-hero">
+            <div class="about-grid">
+<!-- Left: Visual -->
+                <div class="about-visual">
+                    <div class="visual-frame">
+                        <div class="frame-inner">
+                            <div class="profile-container">
+                                <!-- Loading Circle Animation -->
+                                <div class="loading-circle">
+                                    <svg viewBox="0 0 320 320">
+                                        <circle class="circle-bg" cx="160" cy="160" r="160"/>
+                                        <circle class="circle-progress" cx="160" cy="160" r="160"/>
+                                    </svg>
+                                </div>
+                                
+                                <div class="profile-glitch" id="profileGlitch">
+                                    <div class="glitch-layer layer-1"></div>
+                                    <div class="glitch-layer layer-2"></div>
+                                    <div class="glitch-layer layer-3"></div>
+                                    <div class="profile-image"></div>
+                                </div>
+                                <div class="profile-ring"></div>
+                            </div>
+                            <div class="visual-stats">
+                                <div class="stat-item">
+                                    <span class="stat-number" data-count="8">0</span>
+                                    <span class="stat-label" data-i18n="about_years">Anni</span>
+                                </div>
+                                <div class="stat-divider"></div>
+                                <div class="stat-item">
+                                    <span class="stat-number" data-count="150">0</span>
+                                    <span class="stat-label" data-i18n="about_projects">Progetti</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Content -->
+                <div class="about-content">
+                    <div class="content-wrapper">
+                        <p class="about-label fade-in-up" data-i18n="about_label">WHO AM I</p>
+                        <h1 class="about-title fade-in-up delay-1">
+                            <span data-i18n="about_title_1">CREATIVE</span><br>
+                            <span class="highlight" data-i18n="about_title_2">TECHNOLOGIST</span>
+                        </h1>
+                        <div class="about-bio fade-in-up delay-2">
+                            <p data-i18n="about_bio_1">Trasformo idee in esperienze visive immersive. Come Digital Reality Architect, creo ponti tra immaginazione e tecnologia, usando VFX, 3D e motion design come strumenti di narrazione.</p>
+                            <p data-i18n="about_bio_2">Il mio approccio combina precisione tecnica con sensibilità artistica — ogni progetto è un'opportunità per superare i confini del possibile e creare qualcosa che non esisteva prima.</p>
+                        </div>
+                        
+                        <!-- Skills / Tools -->
+                        <div class="skills-section fade-in-up delay-3">
+                            <p class="skills-label" data-i18n="about_tools_label">TOOLS & SKILLS</p>
+                            <div class="skills-grid">
+                                <div class="skill-tag" data-i18n="skill_1">After Effects</div>
+                                <div class="skill-tag" data-i18n="skill_2">Cinema 4D</div>
+                                <div class="skill-tag" data-i18n="skill_3">Houdini</div>
+                                <div class="skill-tag" data-i18n="skill_4">Nuke</div>
+                                <div class="skill-tag" data-i18n="skill_5">Blender</div>
+                                <div class="skill-tag" data-i18n="skill_6">Premiere Pro</div>
+                                <div class="skill-tag" data-i18n="skill_7">DaVinci</div>
+                                <div class="skill-tag" data-i18n="skill_8">Unreal Engine</div>
+                            </div>
+                        </div>
+
+                        <!-- CTA -->
+                        <div class="about-cta fade-in-up delay-3">
+                            <a href="./contact.html" class="btn-primary" data-i18n="about_cta">COLLABORIAMO</a>
+                            <a href="./portfolio.html" class="btn-secondary" data-i18n="about_portfolio_cta">VIEW WORKS →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. TIMELINE SECTION -->
+        <section class="timeline-section">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <h2 data-i18n="about_timeline_title">JOURNEY</h2>
+                </div>
+                
+                <div class="timeline">
+                    <!-- Timeline Item 1 -->
+                    <div class="timeline-item scroll-reveal">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-year">2024</span>
+                            <h3 data-i18n="timeline_1_title">Digital Reality Architect</h3>
+                            <p data-i18n="timeline_1_desc">Consulenze senior per progetti immersive e installazioni interattive. Sviluppo di pipeline VFX per produzioni internazionali.</p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 2 -->
+                    <div class="timeline-item scroll-reveal delay-1">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-year">2021</span>
+                            <h3 data-i18n="timeline_2_title">Freelance VFX Artist</h3>
+                            <p data-i18n="timeline_2_desc"> Collaborazioni con agenzie creative e registi. Focus su compositing, motion graphics e visual effects per spot pubblicitari e cortometraggi.</p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 3 -->
+                    <div class="timeline-item scroll-reveal delay-2">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-year">2018</span>
+                            <h3 data-i18n="timeline_3_title">Primi Progetti</h3>
+                            <p data-i18n="timeline_3_desc">Esplorazione autodidattica di software 3D e VFX. Primi lavori nel campo del videomaking e motion design.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. PHILOSOPHY SECTION -->
+        <section class="philosophy-section">
+            <div class="container">
+                <div class="philosophy-grid">
+                    <div class="philosophy-card scroll-reveal">
+                        <span class="philosophy-number">01</span>
+                        <h3 data-i18n="philosophy_1_title">ATALANTA</h3>
+                        <p data-i18n="philosophy_1_desc">La velocità è tutto. Ogni frame conta, ogni secondo è un'opportunità per stupire.</p>
+                    </div>
+                    <div class="philosophy-card scroll-reveal delay-1">
+                        <span class="philosophy-number">02</span>
+                        <h3 data-i18n="philosophy_2_title">DETTAGLIO</h3>
+                        <p data-i18n="philosophy_2_desc">La differenza tra buono e straordinario sta nei pixel che nessuno nota... tranne tutti.</p>
+                    </div>
+                    <div class="philosophy-card scroll-reveal delay-2">
+                        <span class="philosophy-number">03</span>
+                        <h3 data-i18n="philosophy_3_title">EVOLUZIONE</h3>
+                        <p data-i18n="philosophy_3_desc">La tecnologia cambia ogni giorno. La curiosità è l'unico strumento che non si obsolesce.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer" id="final-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h2 class="footer-logo">DR</h2>
+                    <p data-i18n="footer_tagline">Digital Reality Architect</p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-group">
+                        <h4>Social</h4>
+                        <ul>
+                            <li><a href="https://www.instagram.com/drealm.mov" class="hover-link">Instagram</a></li>
+                            <li><a href="https://www.linkedin.com/in/denis-ruscitti-968568305" class="hover-link">LinkedIn</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-group">
+                        <h4>Contatti</h4>
+                        <ul>
+                            <li><a href="mailto:denisruscittivfx@gmail.com?subject=Project%20Inquiry&body=Ciao%20Denis,%0A%0AVorrei%20parlarti%20di%20un%20progetto:" class="hover-link">Email</a></li>
+                            <li><a href="./contact.html" class="hover-link">Form</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Designed by Genna</p>
+                <p>&copy; 2026 DENIS RUSCITTI — ALL RIGHTS RESERVED</p>
+                <button id="back-to-top" class="hover-link">TOP ↑</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LANGUAGE SWITCHER -->
+    <div class="lang-switcher" id="langToggle">
+        <img src="assets/images/lingue.png" alt="Language" class="lang-icon">
+        <span id="currentLang">ITA</span>
+    </div>
+
+<!-- SCRIPTS -->
+    <script src="assets/js/language.js"></script>
+    <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/about.js"></script>
+</body>
+</html>
+
